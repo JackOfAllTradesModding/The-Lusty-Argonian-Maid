@@ -1,13 +1,11 @@
 ;BEGIN FRAGMENT CODE - Do not edit anything between this and the end comment
-;NEXT FRAGMENT INDEX 1
-Scriptname LAM_TIF_Intro_KassenStartB Extends TopicInfo Hidden
+;NEXT FRAGMENT INDEX 2
+Scriptname LAM_SF_Intro_TF_Phase2 Extends Scene Hidden
 
 ;BEGIN FRAGMENT Fragment_0
-Function Fragment_0(ObjectReference akSpeakerRef)
-Actor akSpeaker = akSpeakerRef as Actor
+Function Fragment_0()
 ;BEGIN CODE
-;Set IntroMiscto 10
-;Set Intro to 10
+;Comment
 ;END CODE
 EndFunction
 ;END FRAGMENT

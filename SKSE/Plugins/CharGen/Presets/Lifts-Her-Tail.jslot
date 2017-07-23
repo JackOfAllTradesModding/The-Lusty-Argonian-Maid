@@ -1,0 +1,854 @@
+{
+   "actor" : {
+      "hairColor" : 6830613,
+      "weight" : 0
+   },
+   "bodyMorphs" : [
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 0
+            }
+         ],
+         "name" : "XPMSEAASaveCRC_2hweqp"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 1
+            }
+         ],
+         "name" : "XPMSEAARange_magatk"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 2
+            }
+         ],
+         "name" : "XPMSEAAID"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 1
+            }
+         ],
+         "name" : "XPMSEAARange_magcon"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 1
+            }
+         ],
+         "name" : "XPMSEAABase_maceqp"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 6
+            }
+         ],
+         "name" : "XPMSEAABase_shout"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 1
+            }
+         ],
+         "name" : "XPMSEAABase_1hmeqp"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 0
+            }
+         ],
+         "name" : "XPMSEAASave_bowidle"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 1
+            }
+         ],
+         "name" : "XPMSEAABase_boweqp"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 1
+            }
+         ],
+         "name" : "XPMSEAABase_bowatk"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 0
+            }
+         ],
+         "name" : "XPMSEAASave_magmt"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 1
+            }
+         ],
+         "name" : "XPMSEAABase_axeeqp"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 1
+            }
+         ],
+         "name" : "XPMSEAABase_2hweqp"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 1
+            }
+         ],
+         "name" : "XPMSEAARange_boweqp"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 0
+            }
+         ],
+         "name" : "XPMSEAASave_2hweqp"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 1
+            }
+         ],
+         "name" : "XPMSEAABase_2hmeqp"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 1
+            }
+         ],
+         "name" : "XPMSEAARange_bowatk"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 1
+            }
+         ],
+         "name" : "XPMSEAABase_bowidle"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 1
+            }
+         ],
+         "name" : "XPMSEAABase_magidle"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 0
+            }
+         ],
+         "name" : "XPMSEAASave_magcastmt"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 0
+            }
+         ],
+         "name" : "XPMSEAASaveCRC_sprint"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 1
+            }
+         ],
+         "name" : "XPMSEAABase_dageqp"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 0
+            }
+         ],
+         "name" : "XPMSEAASaveCRC_maceqp"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 1
+            }
+         ],
+         "name" : "XPMSEAABase_magatk"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 2
+            }
+         ],
+         "name" : "XPMSEAARange_maceqp"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 1
+            }
+         ],
+         "name" : "XPMSEAABase_magcastmt"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 0
+            }
+         ],
+         "name" : "XPMSEAASave_magcon"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 1
+            }
+         ],
+         "name" : "XPMSEAABase_magcon"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 1
+            }
+         ],
+         "name" : "XPMSEAABase_magmt"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 6
+            }
+         ],
+         "name" : "XPMSEAABase_sprint"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 5
+            }
+         ],
+         "name" : "XPMSEAARange_1hmeqp"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 1
+            }
+         ],
+         "name" : "XPMSEAARange_2hmeqp"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 1
+            }
+         ],
+         "name" : "XPMSEAARange_2hweqp"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 0
+            }
+         ],
+         "name" : "XPMSEAASave_axeeqp"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 5
+            }
+         ],
+         "name" : "XPMSEAARange_axeeqp"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 1
+            }
+         ],
+         "name" : "XPMSEAARange_bowidle"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 0
+            }
+         ],
+         "name" : "XPMSEAASaveCRC_shout"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 6
+            }
+         ],
+         "name" : "XPMSEAARange_dageqp"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 0
+            }
+         ],
+         "name" : "XPMSEAASaveCRC_magcastmt"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 1
+            }
+         ],
+         "name" : "XPMSEAARange_magcastmt"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 1
+            }
+         ],
+         "name" : "XPMSEAARange_magidle"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 1
+            }
+         ],
+         "name" : "XPMSEAARange_magmt"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 0
+            }
+         ],
+         "name" : "XPMSEAASave_maceqp"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 1
+            }
+         ],
+         "name" : "XPMSEAARange_sprint"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 0
+            }
+         ],
+         "name" : "XPMSEAASave_shout"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 1
+            }
+         ],
+         "name" : "XPMSEAARange_shout"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 0
+            }
+         ],
+         "name" : "XPMSEAASave_sprint"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 0
+            }
+         ],
+         "name" : "XPMSEAASave_1hmeqp"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 0
+            }
+         ],
+         "name" : "XPMSEAASave_2hmeqp"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 0
+            }
+         ],
+         "name" : "XPMSEAASaveCRC_magidle"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 0
+            }
+         ],
+         "name" : "XPMSEAASaveCRC_1hmeqp"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 0
+            }
+         ],
+         "name" : "XPMSEAASave_bowatk"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 0
+            }
+         ],
+         "name" : "XPMSEAASave_dageqp"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 0
+            }
+         ],
+         "name" : "XPMSEAASaveCRC_dageqp"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 0
+            }
+         ],
+         "name" : "XPMSEAASaveCRC_axeeqp"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 0
+            }
+         ],
+         "name" : "XPMSEAASaveCRC_2hmeqp"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 0
+            }
+         ],
+         "name" : "XPMSEAASaveCRC_bowatk"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 0
+            }
+         ],
+         "name" : "XPMSEAASave_boweqp"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 0
+            }
+         ],
+         "name" : "XPMSEAASaveCRC_boweqp"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 0
+            }
+         ],
+         "name" : "XPMSEAASaveCRC_bowidle"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 0
+            }
+         ],
+         "name" : "XPMSEAASave_magatk"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 0
+            }
+         ],
+         "name" : "XPMSEAASaveCRC_magatk"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 0
+            }
+         ],
+         "name" : "XPMSEAASaveCRC_magcon"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 0
+            }
+         ],
+         "name" : "XPMSEAASave_magidle"
+      },
+      {
+         "keys" : [
+            {
+               "key" : "XPMSE.esp",
+               "value" : 0
+            }
+         ],
+         "name" : "XPMSEAASaveCRC_magmt"
+      }
+   ],
+   "faceTextures" : [
+      {
+         "index" : 0,
+         "texture" : "Actors\\Character\\ArgonianFemale\\ArgonianFemaleHead.dds"
+      },
+      {
+         "index" : 1,
+         "texture" : "Actors\\Character\\ArgonianFemale\\ArgonianFemaleHead_msn.dds"
+      },
+      {
+         "index" : 2,
+         "texture" : "Actors\\Character\\Female\\FemaleHead_sk.dds"
+      },
+      {
+         "index" : 3,
+         "texture" : "Actors\\Character\\ArgonianFemale\\BlankDetailmap.dds"
+      },
+      {
+         "index" : 7,
+         "texture" : "Actors\\Character\\ArgonianFemale\\ArgonianFemaleHead_s.dds"
+      }
+   ],
+   "headParts" : [
+      {
+         "formId" : 333331,
+         "type" : 0
+      },
+      {
+         "formId" : 599309,
+         "type" : 1
+      },
+      {
+         "formId" : 733140,
+         "type" : 2
+      },
+      {
+         "formId" : 865097,
+         "type" : 3
+      },
+      {
+         "formId" : 599308,
+         "type" : 5
+      },
+      {
+         "formId" : 733137,
+         "type" : 6
+      }
+   ],
+   "mods" : [
+      {
+         "index" : 0,
+         "name" : "Skyrim.esm"
+      }
+   ],
+   "morphs" : {
+      "custom" : null,
+      "default" : {
+         "morphs" : [
+            -0.4000000059604645,
+            -0.699999988079071,
+            -0.1000000014901161,
+            -0.300000011920929,
+            -0.6000000238418579,
+            0.4000000059604645,
+            0.6000000238418579,
+            -0.5,
+            -0.4000000059604645,
+            0.800000011920929,
+            0,
+            0,
+            0,
+            -1,
+            -1,
+            0,
+            -0.9000000357627869,
+            0,
+            3.402823466385289e+38
+         ],
+         "presets" : [ 3, 4294967295, 2, 5 ]
+      },
+      "sculpt" : null,
+      "sculptDivisor" : 10000
+   },
+   "tintInfo" : [
+      {
+         "color" : 2822131233,
+         "index" : 0,
+         "texture" : "Actors\\Character\\Character Assets\\TintMasks\\SkinTone.dds"
+      },
+      {
+         "color" : 2937130502,
+         "index" : 1,
+         "texture" : "Actors\\Character\\Character Assets\\TintMasks\\ArgonianForehead.dds"
+      },
+      {
+         "color" : 2937130502,
+         "index" : 2,
+         "texture" : "Actors\\Character\\Character Assets\\TintMasks\\ArgonianEyeSocketUpper.dds"
+      },
+      {
+         "color" : 2937130502,
+         "index" : 3,
+         "texture" : "Actors\\Character\\Character Assets\\TintMasks\\ArgonianEyeSocketLower.dds"
+      },
+      {
+         "color" : 2937130502,
+         "index" : 4,
+         "texture" : "Actors\\Character\\Character Assets\\TintMasks\\ArgonianEyeLiner.dds"
+      },
+      {
+         "color" : 2937130502,
+         "index" : 5,
+         "texture" : "Actors\\Character\\Character Assets\\TintMasks\\ArgonianNostrils01.dds"
+      },
+      {
+         "color" : 2937130502,
+         "index" : 6,
+         "texture" : "Actors\\Character\\Character Assets\\TintMasks\\ArgonianLaughline.dds"
+      },
+      {
+         "color" : 2937130502,
+         "index" : 7,
+         "texture" : "Actors\\Character\\Character Assets\\TintMasks\\ArgonianCheeks.dds"
+      },
+      {
+         "color" : 2937130502,
+         "index" : 8,
+         "texture" : "Actors\\Character\\Character Assets\\TintMasks\\ArgonianCheeksLower.dds"
+      },
+      {
+         "color" : 2937130502,
+         "index" : 9,
+         "texture" : "Actors\\Character\\Character Assets\\TintMasks\\ArgonianLips.dds"
+      },
+      {
+         "color" : 2937130502,
+         "index" : 10,
+         "texture" : "Actors\\Character\\Character Assets\\TintMasks\\ArgonianChin.dds"
+      },
+      {
+         "color" : 2937130502,
+         "index" : 11,
+         "texture" : "Actors\\Character\\Character Assets\\TintMasks\\ArgonianNeck.dds"
+      },
+      {
+         "color" : 13789440,
+         "index" : 12,
+         "texture" : "Actors\\Character\\Character Assets\\TintMasks\\ArgonianStripes01.dds"
+      },
+      {
+         "color" : 13789440,
+         "index" : 13,
+         "texture" : "Actors\\Character\\Character Assets\\TintMasks\\ArgonianStripes02.dds"
+      },
+      {
+         "color" : 13789440,
+         "index" : 14,
+         "texture" : "Actors\\Character\\Character Assets\\TintMasks\\ArgonianStripes03.dds"
+      },
+      {
+         "color" : 2937130502,
+         "index" : 15,
+         "texture" : "Actors\\Character\\Character Assets\\TintMasks\\ArgonianStripes04.dds"
+      },
+      {
+         "color" : 13789440,
+         "index" : 16,
+         "texture" : "Actors\\Character\\Character Assets\\TintMasks\\ArgonianStripes05.dds"
+      },
+      {
+         "color" : 0,
+         "index" : 17,
+         "texture" : "Actors\\Character\\Character Assets\\TintMasks\\ArgonianDirt.dds"
+      },
+      {
+         "color" : 13789440,
+         "index" : 18,
+         "texture" : "ksArgonianWarpaint\\ksArgonianWarpaint01.dds"
+      },
+      {
+         "color" : 13789440,
+         "index" : 19,
+         "texture" : "ksArgonianWarpaint\\ksArgonianWarpaint02.dds"
+      },
+      {
+         "color" : 13789440,
+         "index" : 20,
+         "texture" : "ksArgonianWarpaint\\ksArgonianWarpaint03.dds"
+      },
+      {
+         "color" : 13789440,
+         "index" : 21,
+         "texture" : "ksArgonianWarpaint\\ksArgonianWarpaint04.dds"
+      },
+      {
+         "color" : 13789440,
+         "index" : 22,
+         "texture" : "ksArgonianWarpaint\\ksArgonianWarpaint06.dds"
+      },
+      {
+         "color" : 13789440,
+         "index" : 23,
+         "texture" : "ksArgonianWarpaint\\ksArgonianWarpaint08.dds"
+      },
+      {
+         "color" : 13789440,
+         "index" : 24,
+         "texture" : "ksArgonianWarpaint\\ksArgonianWarpaint09.dds"
+      },
+      {
+         "color" : 13789440,
+         "index" : 25,
+         "texture" : "ksArgonianWarpaint\\ksArgonianWarpaint10.dds"
+      },
+      {
+         "color" : 13789440,
+         "index" : 26,
+         "texture" : "ksArgonianWarpaint\\ksArgonianWarpaint11.dds"
+      },
+      {
+         "color" : 16777215,
+         "index" : 27,
+         "texture" : "ksArgonianWarpaint\\ksArgonianWarpaint12.dds"
+      },
+      {
+         "color" : 16777215,
+         "index" : 28,
+         "texture" : "ksArgonianWarpaint\\ksArgonianWarpaint13.dds"
+      },
+      {
+         "color" : 16777215,
+         "index" : 29,
+         "texture" : "ksArgonianWarpaint\\ksArgonianWarpaint14.dds"
+      },
+      {
+         "color" : 16777215,
+         "index" : 30,
+         "texture" : "ksArgonianWarpaint\\ksArgonianWarpaint15.dds"
+      },
+      {
+         "color" : 16777215,
+         "index" : 31,
+         "texture" : "ksArgonianWarpaint\\ksArgonianWarpaint16.dds"
+      },
+      {
+         "color" : 16777215,
+         "index" : 32,
+         "texture" : "ksArgonianWarpaint\\ksArgonianWarpaint17.dds"
+      },
+      {
+         "color" : 16777215,
+         "index" : 33,
+         "texture" : "ksArgonianWarpaint\\ksArgonianWarpaint18.dds"
+      }
+   ],
+   "version" : {
+      "formatVersion" : 3,
+      "runtimeVersion" : 153092096,
+      "signature" : 1163086675,
+      "skseVersion" : 17236016
+   }
+}
