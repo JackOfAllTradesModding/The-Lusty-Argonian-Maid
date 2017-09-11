@@ -42,22 +42,22 @@ Function Transform()
 	Utility.Wait(0.5)
 	PlayerRef.SetRace(ArgonianRace);
 	Utility.Wait(0.5)
-	PlayerREF.QueueNiNodeUpdate();
+	PlayerREF.QueueNiNodeUpdate(); Not sure if this is actually necessary
 
 	;Get key for sheath
 	Int RKey = Input.GetMappedKey("Ready Weapon"); May need to add support for gamepads later. Will wait for bug reports
 	
 	;Disable menus and then open and close RaceMenu, otherwise the normal and specular maps don't update properly for some reason
 	Debug.ToggleMenus();
-	Utility.WaitMenuMode(0.1);
+	Utility.WaitMenuMode(0.5);
 	Game.ShowRaceMenu();
-	Utility.WaitMenuMode(0.4);
+	Utility.WaitMenuMode(1.0);
 	Input.TapKey(RKey);
-	Utility.WaitMenuMode(0.2);
+	Utility.WaitMenuMode(1.0);
 	Input.TapKey(28);
-	Utility.WaitMenuMode(0.4);
+	Utility.WaitMenuMode(1.0);
 	Input.TapKey(28);
-	Utility.WaitMenuMode(0.1);
+	Utility.WaitMenuMode(0.5);
 	Debug.ToggleMenus();
 	
 	;Change player name
