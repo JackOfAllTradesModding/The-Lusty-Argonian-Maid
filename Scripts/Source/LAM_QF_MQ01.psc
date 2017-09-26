@@ -1,36 +1,6 @@
 ;BEGIN FRAGMENT CODE - Do not edit anything between this and the end comment
-;NEXT FRAGMENT INDEX 6
+;NEXT FRAGMENT INDEX 8
 Scriptname LAM_QF_MQ01 Extends Quest Hidden
-
-;BEGIN ALIAS PROPERTY Orgnar
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Orgnar Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY BroomActivator
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_BroomActivator Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY Dust2
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Dust2 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY Dust1
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Dust1 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY Dust3
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Dust3 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY Dust4
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Dust4 Auto
-;END ALIAS PROPERTY
 
 ;BEGIN ALIAS PROPERTY Dust5
 ;ALIAS PROPERTY TYPE ReferenceAlias
@@ -42,25 +12,46 @@ ReferenceAlias Property Alias_Dust5 Auto
 ReferenceAlias Property Alias_Dust6 Auto
 ;END ALIAS PROPERTY
 
-;BEGIN FRAGMENT Fragment_3
-Function Fragment_3()
-;BEGIN CODE
-Alias_Dust1.GetReference().Enable()
-Alias_Dust2.GetReference().Enable()
-Alias_Dust3.GetReference().Enable()
-Alias_Dust4.GetReference().Enable()
-Alias_Dust5.GetReference().Enable()
-Alias_Dust6.GetReference().Enable()
-SetObjectiveCompleted(10)
-SetObjectiveDisplayed(20)
-;END CODE
-EndFunction
-;END FRAGMENT
+;BEGIN ALIAS PROPERTY Orgnar
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_Orgnar Auto
+;END ALIAS PROPERTY
 
-;BEGIN FRAGMENT Fragment_1
-Function Fragment_1()
+;BEGIN ALIAS PROPERTY BroomActivator
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_BroomActivator Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY Dust4
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_Dust4 Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY Dust1
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_Dust1 Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY CookingPot
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_CookingPot Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY Dust3
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_Dust3 Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY Dust2
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_Dust2 Auto
+;END ALIAS PROPERTY
+
+;BEGIN FRAGMENT Fragment_7
+Function Fragment_7()
 ;BEGIN CODE
-SetObjectiveDisplayed(10)
+SetObjectiveCompleted(40)
+SetObjectiveDisplayed(50)
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -76,11 +67,43 @@ Util.FadeFromBlack()
 EndFunction
 ;END FRAGMENT
 
+;BEGIN FRAGMENT Fragment_1
+Function Fragment_1()
+;BEGIN CODE
+SetObjectiveDisplayed(10)
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_6
+Function Fragment_6()
+;BEGIN CODE
+SetObjectiveCompleted(30)
+SetObjectiveDisplayed(40)
+;END CODE
+EndFunction
+;END FRAGMENT
+
 ;BEGIN FRAGMENT Fragment_5
 Function Fragment_5()
 ;BEGIN CODE
 SetObjectiveCompleted(20)
 SetObjectiveDisplayed(30)
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_3
+Function Fragment_3()
+;BEGIN CODE
+Alias_Dust1.GetReference().Enable()
+Alias_Dust2.GetReference().Enable()
+Alias_Dust3.GetReference().Enable()
+Alias_Dust4.GetReference().Enable()
+Alias_Dust5.GetReference().Enable()
+Alias_Dust6.GetReference().Enable()
+SetObjectiveCompleted(10)
+SetObjectiveDisplayed(20)
 ;END CODE
 EndFunction
 ;END FRAGMENT
