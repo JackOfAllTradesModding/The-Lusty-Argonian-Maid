@@ -1,30 +1,10 @@
 ;BEGIN FRAGMENT CODE - Do not edit anything between this and the end comment
-;NEXT FRAGMENT INDEX 8
+;NEXT FRAGMENT INDEX 12
 Scriptname LAM_QF_MQ01 Extends Quest Hidden
 
-;BEGIN ALIAS PROPERTY Dust5
+;BEGIN ALIAS PROPERTY Dust3
 ;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Dust5 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY Dust6
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Dust6 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY Orgnar
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Orgnar Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY BroomActivator
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_BroomActivator Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY Dust4
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Dust4 Auto
+ReferenceAlias Property Alias_Dust3 Auto
 ;END ALIAS PROPERTY
 
 ;BEGIN ALIAS PROPERTY Dust1
@@ -32,14 +12,29 @@ ReferenceAlias Property Alias_Dust4 Auto
 ReferenceAlias Property Alias_Dust1 Auto
 ;END ALIAS PROPERTY
 
+;BEGIN ALIAS PROPERTY Orgnar
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_Orgnar Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY Dust5
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_Dust5 Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY BedToMake01
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_BedToMake01 Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY BroomActivator
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_BroomActivator Auto
+;END ALIAS PROPERTY
+
 ;BEGIN ALIAS PROPERTY CookingPot
 ;ALIAS PROPERTY TYPE ReferenceAlias
 ReferenceAlias Property Alias_CookingPot Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY Dust3
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Dust3 Auto
 ;END ALIAS PROPERTY
 
 ;BEGIN ALIAS PROPERTY Dust2
@@ -47,11 +42,42 @@ ReferenceAlias Property Alias_Dust3 Auto
 ReferenceAlias Property Alias_Dust2 Auto
 ;END ALIAS PROPERTY
 
+;BEGIN ALIAS PROPERTY Dust4
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_Dust4 Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY Dust6
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_Dust6 Auto
+;END ALIAS PROPERTY
+
+;BEGIN FRAGMENT Fragment_1
+Function Fragment_1()
+;BEGIN CODE
+SetObjectiveDisplayed(10)
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_5
+Function Fragment_5()
+;BEGIN CODE
+SetObjectiveCompleted(20)
+SetObjectiveDisplayed(30)
+;END CODE
+EndFunction
+;END FRAGMENT
+
 ;BEGIN FRAGMENT Fragment_7
 Function Fragment_7()
 ;BEGIN CODE
-SetObjectiveCompleted(40)
-SetObjectiveDisplayed(50)
+setObjectiveCompleted(40)
+
+;Set bed as needing to be made
+BedScript.NeedsTidying(True);
+
+setObjectiveDisplayed(50)
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -67,28 +93,20 @@ Util.FadeFromBlack()
 EndFunction
 ;END FRAGMENT
 
-;BEGIN FRAGMENT Fragment_1
-Function Fragment_1()
+;BEGIN FRAGMENT Fragment_10
+Function Fragment_10()
 ;BEGIN CODE
-SetObjectiveDisplayed(10)
+SetObjectiveCompleted(60)
+SetObjectiveDisplayed(70)
 ;END CODE
 EndFunction
 ;END FRAGMENT
 
-;BEGIN FRAGMENT Fragment_6
-Function Fragment_6()
+;BEGIN FRAGMENT Fragment_8
+Function Fragment_8()
 ;BEGIN CODE
-SetObjectiveCompleted(30)
-SetObjectiveDisplayed(40)
-;END CODE
-EndFunction
-;END FRAGMENT
-
-;BEGIN FRAGMENT Fragment_5
-Function Fragment_5()
-;BEGIN CODE
-SetObjectiveCompleted(20)
-SetObjectiveDisplayed(30)
+SetObjectiveCompleted(50)
+SetObjectiveDisplayed(60)
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -108,6 +126,17 @@ SetObjectiveDisplayed(20)
 EndFunction
 ;END FRAGMENT
 
+;BEGIN FRAGMENT Fragment_6
+Function Fragment_6()
+;BEGIN CODE
+setObjectiveCompleted(30)
+setObjectiveDisplayed(40)
+;END CODE
+EndFunction
+;END FRAGMENT
+
 ;END FRAGMENT CODE - Do not edit anything between this and the begin comment
 
 LAM_Util Property util  Auto  
+
+LAM_MQ01_BedMaking Property BedScript  Auto  
