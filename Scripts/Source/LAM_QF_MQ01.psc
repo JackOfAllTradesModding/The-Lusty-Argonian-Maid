@@ -2,34 +2,9 @@
 ;NEXT FRAGMENT INDEX 12
 Scriptname LAM_QF_MQ01 Extends Quest Hidden
 
-;BEGIN ALIAS PROPERTY CookingPot
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_CookingPot Auto
-;END ALIAS PROPERTY
-
 ;BEGIN ALIAS PROPERTY Dust2
 ;ALIAS PROPERTY TYPE ReferenceAlias
 ReferenceAlias Property Alias_Dust2 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY Dust4
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Dust4 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY BedToMake01
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_BedToMake01 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY Dust5
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Dust5 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY Orgnar
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Orgnar Auto
 ;END ALIAS PROPERTY
 
 ;BEGIN ALIAS PROPERTY Dust3
@@ -37,19 +12,44 @@ ReferenceAlias Property Alias_Orgnar Auto
 ReferenceAlias Property Alias_Dust3 Auto
 ;END ALIAS PROPERTY
 
-;BEGIN ALIAS PROPERTY Dust6
+;BEGIN ALIAS PROPERTY Orgnar
 ;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Dust6 Auto
+ReferenceAlias Property Alias_Orgnar Auto
 ;END ALIAS PROPERTY
 
-;BEGIN ALIAS PROPERTY Dust1
+;BEGIN ALIAS PROPERTY Dust5
 ;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Dust1 Auto
+ReferenceAlias Property Alias_Dust5 Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY BedToMake01
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_BedToMake01 Auto
 ;END ALIAS PROPERTY
 
 ;BEGIN ALIAS PROPERTY BroomActivator
 ;ALIAS PROPERTY TYPE ReferenceAlias
 ReferenceAlias Property Alias_BroomActivator Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY Dust6
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_Dust6 Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY Dust4
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_Dust4 Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY CookingPot
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_CookingPot Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY Dust1
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_Dust1 Auto
 ;END ALIAS PROPERTY
 
 ;BEGIN FRAGMENT Fragment_3
@@ -67,15 +67,11 @@ SetObjectiveDisplayed(20)
 EndFunction
 ;END FRAGMENT
 
-;BEGIN FRAGMENT Fragment_7
-Function Fragment_7()
+;BEGIN FRAGMENT Fragment_10
+Function Fragment_10()
 ;BEGIN CODE
-setObjectiveCompleted(40)
-
-;Set bed as needing to be made
-BedScript.NeedsTidying(True);
-
-setObjectiveDisplayed(50)
+SetObjectiveCompleted(60)
+SetObjectiveDisplayed(70)
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -84,15 +80,6 @@ EndFunction
 Function Fragment_1()
 ;BEGIN CODE
 SetObjectiveDisplayed(10)
-;END CODE
-EndFunction
-;END FRAGMENT
-
-;BEGIN FRAGMENT Fragment_6
-Function Fragment_6()
-;BEGIN CODE
-setObjectiveCompleted(30)
-setObjectiveDisplayed(40)
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -106,6 +93,29 @@ SetObjectiveDisplayed(30)
 EndFunction
 ;END FRAGMENT
 
+;BEGIN FRAGMENT Fragment_0
+Function Fragment_0()
+;BEGIN CODE
+;Game.SetPlayerAIDriven(False);
+Game.EnablePlayerControls()
+SetObjectiveDisplayed(0)
+Util.EquipMaidOutfit();
+Util.FadeFromBlack()
+;And put player into PlayerAlias on Core quest, blank by default.
+Core_PlayerAlias.ForceRefTo(Game.GetPlayer())
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_6
+Function Fragment_6()
+;BEGIN CODE
+setObjectiveCompleted(30)
+setObjectiveDisplayed(40)
+;END CODE
+EndFunction
+;END FRAGMENT
+
 ;BEGIN FRAGMENT Fragment_8
 Function Fragment_8()
 ;BEGIN CODE
@@ -115,24 +125,15 @@ SetObjectiveDisplayed(60)
 EndFunction
 ;END FRAGMENT
 
-;BEGIN FRAGMENT Fragment_0
-Function Fragment_0()
+;BEGIN FRAGMENT Fragment_7
+Function Fragment_7()
 ;BEGIN CODE
-;Game.SetPlayerAIDriven(False);
-Game.EnablePlayerControls()
-SetObjectiveDisplayed(0)
-Util.FadeFromBlack()
-;And put player into PlayerAlias on Core quest, blank by default.
-Core_PlayerAlias.ForceRefTo(Game.GetPlayer())
-;END CODE
-EndFunction
-;END FRAGMENT
+setObjectiveCompleted(40)
 
-;BEGIN FRAGMENT Fragment_10
-Function Fragment_10()
-;BEGIN CODE
-SetObjectiveCompleted(60)
-SetObjectiveDisplayed(70)
+;Set bed as needing to be made
+BedScript.NeedsTidying(True);
+
+setObjectiveDisplayed(50)
 ;END CODE
 EndFunction
 ;END FRAGMENT

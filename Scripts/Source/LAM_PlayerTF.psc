@@ -37,13 +37,13 @@ Function Transform()
 	
 	;Change player race and load face
 	PlayerRef.SetRace(ArgonianRace);
-	Utility.Wait(0.2);
+	Utility.Wait(0.1);
 	CharGen.LoadPreset("Lifts-Her-Tail");
-	Utility.Wait(0.3);
+	Utility.Wait(0.2);
 	PlayerRef.SetRace(ArgonianRaceVampire);
-	Utility.Wait(0.2)
+	Utility.Wait(0.1)
 	PlayerRef.SetRace(ArgonianRace);
-	Utility.Wait(0.2)
+	Utility.Wait(0.1)
 	PlayerREF.QueueNiNodeUpdate(); Not sure if this is actually necessary
 
 	;Get key for sheath
@@ -51,19 +51,14 @@ Function Transform()
 	
 	;Disable menus and then open and close RaceMenu, otherwise the normal and specular maps don't update properly for some reason
 	Debug.ToggleMenus();
-	Utility.WaitMenuMode(0.5);
+	;Utility.WaitMenuMode(0.5);
 	Game.ShowRaceMenu();
 	Utility.WaitMenuMode(1.0);
 	Input.TapKey(RKey);
-	While Semaphore.RaceMenuOpen
+	While Semaphore.RaceMenuOpen ;Uses a semaphore to figure out when the menu is actually closed to avoid artificial latency
 		Utility.WaitMenuMode(0.1)
 		Input.TapKey(28);
 	EndWhile
-	;Utility.WaitMenuMode(1.5);
-	;Input.TapKey(28);
-	;Utility.WaitMenuMode(1.5);
-	;Input.TapKey(28);
-	;Utility.WaitMenuMode(0.5);
 	Debug.ToggleMenus();
 	
 	;Change player name
