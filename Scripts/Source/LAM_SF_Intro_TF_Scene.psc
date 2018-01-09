@@ -1,6 +1,16 @@
 ;BEGIN FRAGMENT CODE - Do not edit anything between this and the end comment
-;NEXT FRAGMENT INDEX 17
+;NEXT FRAGMENT INDEX 18
 Scriptname LAM_SF_Intro_TF_Scene Extends Scene Hidden
+
+;BEGIN FRAGMENT Fragment_4
+Function Fragment_4()
+;BEGIN CODE
+PlayerREF.PlaceAtMe(LAM_ExplosionTF)
+util.FadeToBlackAndHold()
+PlayerScript.Transform()
+;END CODE
+EndFunction
+;END FRAGMENT
 
 ;BEGIN FRAGMENT Fragment_6
 Function Fragment_6()
@@ -16,6 +26,7 @@ Function Fragment_15()
 ;BEGIN CODE
 MagicWall.Enable()
 ;Game.SetPlayerAIDriven(False);
+Game.ForceThirdPerson()
 Game.DisablePlayerControls(True, True, False, False, True, True, True, True)
 
 CultLeaderAlias.GetActorReference().Enable()
@@ -24,16 +35,6 @@ Cultist01Alias.GetActorReference().Enable()
 Cultist01Alias.GetActorReference().SetAlpha(0)
 Cultist02Alias.GetActorReference().Enable()
 Cultist02Alias.GetActorReference().SetAlpha(0)
-;END CODE
-EndFunction
-;END FRAGMENT
-
-;BEGIN FRAGMENT Fragment_4
-Function Fragment_4()
-;BEGIN CODE
-PlayerREF.PlaceAtMe(LAM_ExplosionTF)
-util.FadeToBlackAndHold()
-PlayerScript.Transform()
 ;END CODE
 EndFunction
 ;END FRAGMENT

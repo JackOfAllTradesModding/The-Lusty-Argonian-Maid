@@ -13,6 +13,8 @@ Bool Property SexChanged = False Auto;
 Explosion Property LAM_ExplosionTF Auto; The Hysteria Explosion effect (ExplosionIllusionMassiveDark) but with no force or damage, might shrink the radius too.
 Explosion Property LAM_ExplosionRevert Auto; The Harmony Explosion effect (ExplosionIllusionMassiveLigh01)
 
+LAM_TF_Timer Property Semaphore Auto;
+
 Function Transform()
 	;PlayerREF.PlaceAtMe(LAM_ExplosionTF)
 
@@ -31,17 +33,17 @@ Function Transform()
 
 	;Backup player Race and face
 	PlayerRace = PlayerRef.GetRace();
-	Chargen.SavePreset("LAM-CharacterFace");
+	Chargen.SavePreset("LAM-" + PlayerName + "-Face");
 	
 	;Change player race and load face
 	PlayerRef.SetRace(ArgonianRace);
-	Utility.Wait(0.5);
+	Utility.Wait(0.2);
 	CharGen.LoadPreset("Lifts-Her-Tail");
-	Utility.Wait(0.8);
+	Utility.Wait(0.3);
 	PlayerRef.SetRace(ArgonianRaceVampire);
-	Utility.Wait(0.5)
+	Utility.Wait(0.2)
 	PlayerRef.SetRace(ArgonianRace);
-	Utility.Wait(0.5)
+	Utility.Wait(0.2)
 	PlayerREF.QueueNiNodeUpdate(); Not sure if this is actually necessary
 
 	;Get key for sheath
@@ -53,11 +55,15 @@ Function Transform()
 	Game.ShowRaceMenu();
 	Utility.WaitMenuMode(1.0);
 	Input.TapKey(RKey);
-	Utility.WaitMenuMode(1.0);
-	Input.TapKey(28);
-	Utility.WaitMenuMode(1.0);
-	Input.TapKey(28);
-	Utility.WaitMenuMode(0.5);
+	While Semaphore.RaceMenuOpen
+		Utility.WaitMenuMode(0.1)
+		Input.TapKey(28);
+	EndWhile
+	;Utility.WaitMenuMode(1.5);
+	;Input.TapKey(28);
+	;Utility.WaitMenuMode(1.5);
+	;Input.TapKey(28);
+	;Utility.WaitMenuMode(0.5);
 	Debug.ToggleMenus();
 	
 	;Change player name
