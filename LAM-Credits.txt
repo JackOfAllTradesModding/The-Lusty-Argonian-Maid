@@ -1,2 +1,4 @@
 Credits to :
 	Anano for creating the Osare Maid Outfit
+	InsanitySorrow for the original Laundry meshes/textures
+	Nerd of Prey for the updated versions from Immersive Laundry
