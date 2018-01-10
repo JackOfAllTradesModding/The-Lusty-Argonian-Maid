@@ -20,6 +20,7 @@ Armor Property LAM_MaidShoes Auto
 Armor Property LAM_MaidSkirt Auto
 Armor Property LAM_MaidPanty Auto
 
+Bool Property LockEquipment Auto
 ;FADE IN AND OUT, now using quick properties and exclusively vanilla assets.
 
 ; Fades the screen to black and holds it there.  Call FadeFromBlack() to reverse it.
@@ -39,21 +40,21 @@ EndFunction
 ; Equips the maid outfit to the player
 Function EquipMaidOutfit()
 	PlayerRef.AddItem(LAM_MaidAmulet, 1, True);
-	PlayerRef.EquipItem(LAM_MaidAmulet);
+	PlayerRef.EquipItem(LAM_MaidAmulet, LockEquipment, True);
 	PlayerRef.AddItem(LAM_MaidApron, 1, True);
-	PlayerRef.EquipItem(LAM_MaidApron);
+	PlayerRef.EquipItem(LAM_MaidApron, LockEquipment, True);
 	PlayerRef.AddItem(LAM_MaidArmlet, 1, True);
-	PlayerRef.EquipItem(LAM_MaidArmlet);
+	PlayerRef.EquipItem(LAM_MaidArmlet, LockEquipment, True);
 	PlayerRef.AddItem(LAM_MaidClothes, 1, True);
-	PlayerRef.EquipItem(LAM_MaidClothes);
+	PlayerRef.EquipItem(LAM_MaidClothes, LockEquipment, True);
 	PlayerRef.AddItem(LAM_MaidHeaddress, 1, True);
-	PlayerRef.EquipItem(LAM_MaidHeaddress);
+	PlayerRef.EquipItem(LAM_MaidHeaddress, LockEquipment, True);
 	PlayerRef.AddItem(LAM_MaidKneeSocks, 1, True);
-	PlayerRef.EquipItem(LAM_MaidKneeSocks);
+	PlayerRef.EquipItem(LAM_MaidKneeSocks, LockEquipment, True);
 	PlayerRef.AddItem(LAM_MaidShoes, 1, True);
-	PlayerRef.EquipItem(LAM_MaidShoes);
+	PlayerRef.EquipItem(LAM_MaidShoes, LockEquipment, True);
 	PlayerRef.AddItem(LAM_MaidSkirt, 1, True);
-	PlayerRef.EquipItem(LAM_MaidSkirt);
+	PlayerRef.EquipItem(LAM_MaidSkirt, LockEquipment, True);
 	PlayerRef.AddItem(LAM_MaidPanty, 1, True);
-	PlayerRef.EquipItem(LAM_MaidPanty);
+	PlayerRef.EquipItem(LAM_MaidPanty, LockEquipment, True);
 EndFunction

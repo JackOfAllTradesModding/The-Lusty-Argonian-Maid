@@ -2,24 +2,29 @@
 ;NEXT FRAGMENT INDEX 12
 Scriptname LAM_QF_Intro Extends Quest Hidden
 
-;BEGIN ALIAS PROPERTY SleepingGiantMarker
+;BEGIN ALIAS PROPERTY Kassen
 ;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_SleepingGiantMarker Auto
+ReferenceAlias Property Alias_Kassen Auto
 ;END ALIAS PROPERTY
 
-;BEGIN ALIAS PROPERTY PlayerSceneMarker
+;BEGIN ALIAS PROPERTY Cultist02
 ;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_PlayerSceneMarker Auto
+ReferenceAlias Property Alias_Cultist02 Auto
 ;END ALIAS PROPERTY
 
-;BEGIN ALIAS PROPERTY Vigilant
+;BEGIN ALIAS PROPERTY CultistLeader
 ;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Vigilant Auto
+ReferenceAlias Property Alias_CultistLeader Auto
 ;END ALIAS PROPERTY
 
-;BEGIN ALIAS PROPERTY VigilantKassen
+;BEGIN ALIAS PROPERTY KassenSpawnMarker
 ;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_VigilantKassen Auto
+ReferenceAlias Property Alias_KassenSpawnMarker Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY HoldingCellMarker
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_HoldingCellMarker Auto
 ;END ALIAS PROPERTY
 
 ;BEGIN ALIAS PROPERTY PlayerRef
@@ -32,34 +37,9 @@ ReferenceAlias Property Alias_PlayerRef Auto
 ReferenceAlias Property Alias_KassenSceneMarker Auto
 ;END ALIAS PROPERTY
 
-;BEGIN ALIAS PROPERTY Kassen
+;BEGIN ALIAS PROPERTY VigilantKassen
 ;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Kassen Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY CultistLeader
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_CultistLeader Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY Cultist01
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Cultist01 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY SigilStoneAlias
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_SigilStoneAlias Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY HoldingCellMarker
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_HoldingCellMarker Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY CultLeaderPosition
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_CultLeaderPosition Auto
+ReferenceAlias Property Alias_VigilantKassen Auto
 ;END ALIAS PROPERTY
 
 ;BEGIN ALIAS PROPERTY Cultist02PositionMarker
@@ -67,19 +47,24 @@ ReferenceAlias Property Alias_CultLeaderPosition Auto
 ReferenceAlias Property Alias_Cultist02PositionMarker Auto
 ;END ALIAS PROPERTY
 
+;BEGIN ALIAS PROPERTY Cultist01
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_Cultist01 Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY PlayerSceneMarker
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_PlayerSceneMarker Auto
+;END ALIAS PROPERTY
+
 ;BEGIN ALIAS PROPERTY Cultist01PositionMarker
 ;ALIAS PROPERTY TYPE ReferenceAlias
 ReferenceAlias Property Alias_Cultist01PositionMarker Auto
 ;END ALIAS PROPERTY
 
-;BEGIN ALIAS PROPERTY Cultist02
+;BEGIN ALIAS PROPERTY CultLeaderPosition
 ;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Cultist02 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY KassenSpawnMarker
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_KassenSpawnMarker Auto
+ReferenceAlias Property Alias_CultLeaderPosition Auto
 ;END ALIAS PROPERTY
 
 ;BEGIN ALIAS PROPERTY Wabbajack
@@ -87,10 +72,35 @@ ReferenceAlias Property Alias_KassenSpawnMarker Auto
 ReferenceAlias Property Alias_Wabbajack Auto
 ;END ALIAS PROPERTY
 
-;BEGIN FRAGMENT Fragment_2
-Function Fragment_2()
+;BEGIN ALIAS PROPERTY SleepingGiantMarker
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_SleepingGiantMarker Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY Vigilant
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_Vigilant Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY SigilStoneAlias
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_SigilStoneAlias Auto
+;END ALIAS PROPERTY
+
+;BEGIN FRAGMENT Fragment_7
+Function Fragment_7()
 ;BEGIN CODE
-SetObjectiveDisplayed(5)
+SetObjectiveFailed(20)
+;Cleanup: Move vigilant/Kassen to the holding cell.
+Alias_Kassen.GetReference().MoveTo(Alias_HoldingCellMarker.GetReference())
+Alias_Vigilant.GetReference().MoveTo(Alias_HoldingCellMarker.GetReference())
+Alias_Vigilant.GetReference().Disable()
+Alias_VigilantKassen.GetReference().MoveTo(Alias_HoldingCellMarker.GetReference())
+Alias_VigilantKassen.GetReference().Disable()
+;Move Player to sleeping giant marker
+Alias_PlayerRef.GetReference().MoveTo(Alias_SleepingGiantMarker.GetReference())
+;Start MQ01
+LAM_MQ01.Start()
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -99,6 +109,31 @@ EndFunction
 Function Fragment_11()
 ;BEGIN CODE
 SetObjectiveDisplayed(15)
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_6
+Function Fragment_6()
+;BEGIN CODE
+;Open the last door, start the scene
+SetObjectiveDisplayed(20)
+;DoorRef.SetOpen(True);
+;Game.SetPlayerAIDriven(True);
+Alias_Cultist01.GetReference().MoveTo(Alias_Cultist01PositionMarker.GetReference());
+Alias_Cultist02.GetReference().MoveTo(Alias_Cultist02PositionMarker.GetReference());
+Alias_CultistLeader.GetReference().MoveTo(Alias_CultLeaderPosition.GetReference());
+LAM_Intro_TF_Scene.Start()
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_9
+Function Fragment_9()
+;BEGIN CODE
+Alias_CultistLeader.GetActorReference().SetAlpha(0)
+Alias_Cultist01.GetActorReference().SetAlpha(0)
+Alias_Cultist02.GetActorReference().SetAlpha(0)
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -123,45 +158,10 @@ SetObjectiveDisplayed(10)
 EndFunction
 ;END FRAGMENT
 
-;BEGIN FRAGMENT Fragment_7
-Function Fragment_7()
+;BEGIN FRAGMENT Fragment_2
+Function Fragment_2()
 ;BEGIN CODE
-SetObjectiveFailed(20)
-;Cleanup: Move vigilant/Kassen to the holding cell.
-Alias_Kassen.GetReference().MoveTo(Alias_HoldingCellMarker.GetReference())
-Alias_Vigilant.GetReference().MoveTo(Alias_HoldingCellMarker.GetReference())
-Alias_Vigilant.GetReference().Disable()
-Alias_VigilantKassen.GetReference().MoveTo(Alias_HoldingCellMarker.GetReference())
-Alias_VigilantKassen.GetReference().Disable()
-;Move Player to sleeping giant marker
-Alias_PlayerRef.GetReference().MoveTo(Alias_SleepingGiantMarker.GetReference())
-;Start MQ01
-LAM_MQ01.Start()
-;END CODE
-EndFunction
-;END FRAGMENT
-
-;BEGIN FRAGMENT Fragment_9
-Function Fragment_9()
-;BEGIN CODE
-Alias_CultistLeader.GetActorReference().SetAlpha(0)
-Alias_Cultist01.GetActorReference().SetAlpha(0)
-Alias_Cultist02.GetActorReference().SetAlpha(0)
-;END CODE
-EndFunction
-;END FRAGMENT
-
-;BEGIN FRAGMENT Fragment_6
-Function Fragment_6()
-;BEGIN CODE
-;Open the last door, start the scene
-SetObjectiveDisplayed(20)
-;DoorRef.SetOpen(True);
-;Game.SetPlayerAIDriven(True);
-Alias_Cultist01.GetReference().MoveTo(Alias_Cultist01PositionMarker.GetReference());
-Alias_Cultist02.GetReference().MoveTo(Alias_Cultist02PositionMarker.GetReference());
-Alias_CultistLeader.GetReference().MoveTo(Alias_CultLeaderPosition.GetReference());
-LAM_Intro_TF_Scene.Start()
+SetObjectiveDisplayed(5)
 ;END CODE
 EndFunction
 ;END FRAGMENT

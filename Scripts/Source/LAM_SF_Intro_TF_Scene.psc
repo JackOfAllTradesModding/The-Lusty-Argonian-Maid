@@ -1,13 +1,17 @@
 ;BEGIN FRAGMENT CODE - Do not edit anything between this and the end comment
-;NEXT FRAGMENT INDEX 18
+;NEXT FRAGMENT INDEX 25
 Scriptname LAM_SF_Intro_TF_Scene Extends Scene Hidden
 
-;BEGIN FRAGMENT Fragment_4
-Function Fragment_4()
+;BEGIN FRAGMENT Fragment_12
+Function Fragment_12()
 ;BEGIN CODE
-PlayerREF.PlaceAtMe(LAM_ExplosionTF)
-util.FadeToBlackAndHold()
-PlayerScript.Transform()
+;Teleport the cultists in.
+MGTeleportInEffect.Play(CultLeaderAlias.GetReference(),3.6)
+CultLeaderAlias.GetActorReference().SetAlpha(1, true)
+MGTeleportInEffect.Play(Cultist01Alias.GetReference(),3.6)
+Cultist01Alias.GetActorReference().SetAlpha(1, true)
+MGTeleportInEffect.Play(Cultist02Alias.GetReference(),3.6)
+Cultist02Alias.GetActorReference().SetAlpha(1, true)
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -28,27 +32,26 @@ MagicWall.Enable()
 ;Game.SetPlayerAIDriven(False);
 Game.ForceThirdPerson()
 Game.DisablePlayerControls(True, True, False, False, True, True, True, True)
-
-CultLeaderAlias.GetActorReference().Enable()
+Debug.Trace("LAM: SCENE phase1 fragment")
+CultLeaderAlias.GetReference().Enable()
+Cultist01Alias.GetReference().Enable()
+Cultist02Alias.GetReference().Enable()
+CultLeaderAlias.GetReference().MoveTo(CultistLeaderMarker.GetReference())
+Cultist01Alias.GetReference().MoveTo(Cultist01Marker.GetReference())
+Cultist02Alias.GetReference().MoveTo(Cultist02Marker.GetReference())
 CultLeaderAlias.GetActorReference().SetAlpha(0)
-Cultist01Alias.GetActorReference().Enable()
 Cultist01Alias.GetActorReference().SetAlpha(0)
-Cultist02Alias.GetActorReference().Enable()
 Cultist02Alias.GetActorReference().SetAlpha(0)
 ;END CODE
 EndFunction
 ;END FRAGMENT
 
-;BEGIN FRAGMENT Fragment_12
-Function Fragment_12()
+;BEGIN FRAGMENT Fragment_4
+Function Fragment_4()
 ;BEGIN CODE
-;Teleport the cultists in.
-MGTeleportInEffect.Play(CultLeaderAlias.GetReference(),3.6)
-CultLeaderAlias.GetActorReference().SetAlpha(1, true)
-MGTeleportInEffect.Play(Cultist01Alias.GetReference(),3.6)
-Cultist01Alias.GetActorReference().SetAlpha(1, true)
-MGTeleportInEffect.Play(Cultist02Alias.GetReference(),3.6)
-Cultist02Alias.GetActorReference().SetAlpha(1, true)
+PlayerREF.PlaceAtMe(LAM_ExplosionTF)
+util.FadeToBlackAndHold()
+PlayerScript.Transform()
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -76,3 +79,11 @@ ReferenceAlias Property CultLeaderAlias  Auto
 ReferenceAlias Property Cultist01Alias  Auto  
 
 ReferenceAlias Property Cultist02Alias  Auto  
+
+ReferenceAlias Property Cultist01  Auto  ;Deprecated please ignore
+
+ReferenceAlias Property Cultist01Marker Auto
+
+ReferenceAlias Property Cultist02Marker Auto
+
+ReferenceAlias Property CultistLeaderMarker Auto
