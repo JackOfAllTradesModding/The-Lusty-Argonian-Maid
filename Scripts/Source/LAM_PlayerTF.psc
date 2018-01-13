@@ -49,12 +49,12 @@ Function Transform()
 	;Get key for sheath
 	Int RKey = Input.GetMappedKey("Ready Weapon"); May need to add support for gamepads later. Will wait for bug reports
 	
-	;Disable menus and then open and close RaceMenu, otherwise the normal and specular maps don't update properly for some reason
+	;Disable menus and then open and close RaceMenu, otherwise the normal and specular maps don't update properly for some reason and the heads gets plasticky and smooth.
 	Debug.ToggleMenus();
 	;Utility.WaitMenuMode(0.5);
 	Game.ShowRaceMenu();
-	Utility.WaitMenuMode(1.0);
-	Input.TapKey(RKey);
+	Utility.WaitMenuMode(1.0); 
+	Input.TapKey(RKey);Since R is only pressed once there's a chance that it gets stuck forever. testing is needed but this seems to work no problem
 	While Semaphore.RaceMenuOpen ;Uses a semaphore to figure out when the menu is actually closed to avoid artificial latency
 		Utility.WaitMenuMode(0.1)
 		Input.TapKey(28);
