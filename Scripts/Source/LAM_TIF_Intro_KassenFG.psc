@@ -6,7 +6,7 @@ Scriptname LAM_TIF_Intro_KassenFG Extends TopicInfo Hidden
 Function Fragment_0(ObjectReference akSpeakerRef)
 Actor akSpeaker = akSpeakerRef as Actor
 ;BEGIN CODE
-GetOwningQuest().SetStage(2)
+getOwningQuest().setStage(2);
 ;END CODE
 EndFunction
 ;END FRAGMENT
