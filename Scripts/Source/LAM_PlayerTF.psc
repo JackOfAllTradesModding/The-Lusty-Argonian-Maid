@@ -19,7 +19,7 @@ Function Transform()
 	;PlayerREF.PlaceAtMe(LAM_ExplosionTF)
 
 	;Backup Name
-	PlayerName = PlayerREF.GetName();
+	PlayerName = PlayerREF.GetActorBase().GetName();
 	
 	;Sex
 	If PlayerREF.GetActorBase().GetSex() != 1;
@@ -37,13 +37,26 @@ Function Transform()
 	
 	;Change player race and load face
 	PlayerRef.SetRace(ArgonianRace);
-	Utility.Wait(0.1);
-	CharGen.LoadPreset("Lifts-Her-Tail");
 	Utility.Wait(0.2);
+	While PlayerREF.GetRace() != ArgonianRace
+		Utility.Wait(0.1);No idea if this works or is necessary
+	EndWhile
+	
+	CharGen.LoadPreset("Lifts-Her-Tail");
+	Utility.Wait(0.4);
+	
 	PlayerRef.SetRace(ArgonianRaceVampire);
-	Utility.Wait(0.1)
+	Utility.Wait(0.2)
+	While PlayerREF.GetRace() != ArgonianRaceVampire
+		Utility.Wait(0.1);No idea if this works or is necessary
+	EndWhile
+	
 	PlayerRef.SetRace(ArgonianRace);
-	Utility.Wait(0.1)
+	Utility.Wait(0.2)
+	While PlayerREF.GetRace() != ArgonianRace
+		Utility.Wait(0.1);No idea if this works or is necessary
+	EndWhile
+	
 	PlayerREF.QueueNiNodeUpdate(); Not sure if this is actually necessary
 
 	;Get key for sheath
@@ -53,15 +66,20 @@ Function Transform()
 	Debug.ToggleMenus();
 	;Utility.WaitMenuMode(0.5);
 	Game.ShowRaceMenu();
-	Utility.WaitMenuMode(1.0); 
-	Input.TapKey(RKey);Since R is only pressed once there's a chance that it gets stuck forever. testing is needed but this seems to work no problem
+	Utility.WaitMenuMode(0.5); 
+	Input.TapKey(RKey);Since R is only pressed once there's a chance that it gets stuck forever. So if the loop seems to be sticking it will press R.
+	int i = 0
 	While Semaphore.RaceMenuOpen ;Uses a semaphore to figure out when the menu is actually closed to avoid artificial latency
 		Utility.WaitMenuMode(0.1)
 		Input.TapKey(28);
+		i += 1
+		If (i % 5 == 0)
+			Input.TapKey(RKey)
+		EndIf
 	EndWhile
 	Debug.ToggleMenus();
 	
 	;Change player name
-	PlayerREF.SetName("Lifts-Her-Tail");
+	PlayerREF.GetActorBase().SetName("Lifts-Her-Tail");
 	
 EndFunction 
