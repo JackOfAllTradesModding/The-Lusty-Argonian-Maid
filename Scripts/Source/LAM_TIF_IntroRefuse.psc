@@ -6,6 +6,7 @@ Scriptname LAM_TIF_IntroRefuse Extends TopicInfo Hidden
 Function Fragment_1(ObjectReference akSpeakerRef)
 Actor akSpeaker = akSpeakerRef as Actor
 ;BEGIN CODE
+util.Log("Player told the vigilant no.")
 GetOwningQuest().SetStage(5)
 ;END CODE
 EndFunction
@@ -21,3 +22,5 @@ EndFunction
 ;END FRAGMENT
 
 ;END FRAGMENT CODE - Do not edit anything between this and the begin comment
+
+LAM_Util Property util  Auto  

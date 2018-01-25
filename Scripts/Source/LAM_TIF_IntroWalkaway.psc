@@ -6,9 +6,12 @@ Scriptname LAM_TIF_IntroWalkaway Extends TopicInfo Hidden
 Function Fragment_0(ObjectReference akSpeakerRef)
 Actor akSpeaker = akSpeakerRef as Actor
 ;BEGIN CODE
+util.Log("Player walked the fuck away, #IceColdBitch")
 GetOwningQuest().SetStage(5)
 ;END CODE
 EndFunction
 ;END FRAGMENT
 
 ;END FRAGMENT CODE - Do not edit anything between this and the begin comment
+
+LAM_Util Property util  Auto  
