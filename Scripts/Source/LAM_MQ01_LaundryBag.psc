@@ -3,6 +3,8 @@ ScriptName LAM_MQ01_LaundryBag Extends Activator
 
 ;This specific LaundryBag Script only exists on Mq01, to advance the quest.
 
+ReferenceAlias Property MQ_OrgnarsLaundry Auto
+
 Event OnActivate(ObjectReference akActionRef)
 	;Disable Activator the same way the broom one works,
 	;Add "Orgnar's dirty laundry" to your inventory
