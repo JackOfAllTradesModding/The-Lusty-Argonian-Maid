@@ -31,6 +31,7 @@ String Property LogName = "LAM_log" Auto; The filename of the user log.
 
 ; Fades the screen to black and holds it there.  Call FadeFromBlack() to reverse it.
 Function FadeToBlackAndHold()
+	Log("Fading to black...")
     FadeToBlackImod.Apply()
     Utility.Wait(2)
     FadeToBlackImod.PopTo(FadeToBlackHoldImod)
@@ -38,6 +39,7 @@ EndFunction
 
 ; Fades the screen from black back to normal.  Reverses the effects of FadeToBlackAndHold().
 Function FadeFromBlack()
+	Log("Fading from black...")
     Utility.Wait(2)
     FadeToBlackHoldImod.PopTo(FadeToBlackBackImod)
     FadeToBlackHoldImod.Remove()
@@ -46,6 +48,7 @@ EndFunction
 
 ; Equips the maid outfit to the player, may get moved to the TF script
 Function EquipMaidOutfit()
+	Log("Equipping new maid uniform...");
 	PlayerRef.AddItem(LAM_MaidAmulet, 1, abSilent=True);
 	PlayerRef.EquipItem(LAM_MaidAmulet, LockEquipment, True);
 	PlayerRef.AddItem(LAM_MaidApron, 1, True);
@@ -64,6 +67,7 @@ Function EquipMaidOutfit()
 	PlayerRef.EquipItem(LAM_MaidSkirt, LockEquipment, True);
 	PlayerRef.AddItem(LAM_MaidPanty, 1, True);
 	PlayerRef.EquipItem(LAM_MaidPanty, LockEquipment, True);
+	Log("Maid uniform equipped!")
 EndFunction
 
 
@@ -74,7 +78,7 @@ Function Log(String text, Bool Error = False)
 	
 	If error && (LAM_TraceLogging.GetValue() == 0)
 		;Error log but no userlog, just trace
-		Debug.Trace("SSIM ERROR: " + text);
+		Debug.Trace("LAM ERROR: " + text);
 	ElseIf error
 		;Error log but userlog is open
 		Debug.OpenUserLog(LogName)
