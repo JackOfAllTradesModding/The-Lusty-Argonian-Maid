@@ -17,17 +17,3 @@ Event OnPageReset(String Page)
 	
 
 EndEvent
-
-
-
-
-
-Function Config(String msg, Bool Forced)
-
-	If Forced
-		Debug.Trace("Lusty Argonian Maid: ERROR: " + msg);
-	ElseIf bTraceLogging
-		Debug.Trace("Lusty Argonian Maid: " + msg);
-	EndIf
-
-EndFunction
