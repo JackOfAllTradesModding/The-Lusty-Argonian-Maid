@@ -5,6 +5,8 @@ ScriptName LAM_TF_Timer Extends Quest
 
 Bool Property RaceMenuOpen = False Auto;
 
+LAM_Util Property util Auto; Allows debug logging
+
 Event OnInit()
 	If RaceMenuOpen
 		RaceMenuOpen = False
@@ -24,9 +26,11 @@ EndEvent
 Event OnMenuOpen(String MenuName)
 	RaceMenuOpen = True; Set to true when the menu opens
 	;Utility.Wait(0.1);
+	util.Log("RaceMenu opened...");
 EndEvent
 
 Event OnMenuClose(String MenuName)
 	Utility.Wait(0.1);Just in case
 	RaceMenuOpen = False;
+	util.Log("RaceMenu closed!");
 EndEvent
