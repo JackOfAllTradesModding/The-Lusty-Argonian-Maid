@@ -12,7 +12,7 @@ Event OnInit()
 		RaceMenuOpen = False
 	EndIf
 	RegisterForMenu("RaceSex Menu")
-	RegisterForMenu("RaceSexMenu")	;Cannot prove this is necessary, whether or not the menus are two separate words is inconsistent
+	RegisterForMenu("RaceSexMenu")	;Cannot prove this is necessary, whether or not the menus are two separate words is inconsistent on the wiki and I'm unsure of if this is an issue there or in Bethesda
 EndEvent
 
 Event OnPlayerLoadGame()
