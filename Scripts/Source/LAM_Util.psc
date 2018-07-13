@@ -51,21 +51,21 @@ Function EquipMaidOutfit()
 	Log("Equipping new maid uniform...");
 	PlayerRef.AddItem(LAM_MaidAmulet, 1, abSilent=True);
 	PlayerRef.EquipItem(LAM_MaidAmulet, LockEquipment, True);
-	PlayerRef.AddItem(LAM_MaidApron, 1, abSilent=True);
+	PlayerRef.AddItem(LAM_MaidApron, 1, True);
 	PlayerRef.EquipItem(LAM_MaidApron, LockEquipment, True);
-	PlayerRef.AddItem(LAM_MaidArmlet, 1, abSilent=True);
+	PlayerRef.AddItem(LAM_MaidArmlet, 1, True);
 	PlayerRef.EquipItem(LAM_MaidArmlet, LockEquipment, True);
-	PlayerRef.AddItem(LAM_MaidClothes, 1, abSilent=True);
+	PlayerRef.AddItem(LAM_MaidClothes, 1, True);
 	PlayerRef.EquipItem(LAM_MaidClothes, LockEquipment, True);
-	PlayerRef.AddItem(LAM_MaidHeaddress, 1, abSilent=True);
+	PlayerRef.AddItem(LAM_MaidHeaddress, 1, True);
 	PlayerRef.EquipItem(LAM_MaidHeaddress, LockEquipment, True);
-	PlayerRef.AddItem(LAM_MaidKneeSocks, 1, abSilent=True);
+	PlayerRef.AddItem(LAM_MaidKneeSocks, 1, True);
 	PlayerRef.EquipItem(LAM_MaidKneeSocks, LockEquipment, True);
-	PlayerRef.AddItem(LAM_MaidShoes, 1, abSilent=True);
+	PlayerRef.AddItem(LAM_MaidShoes, 1, True);
 	PlayerRef.EquipItem(LAM_MaidShoes, LockEquipment, True);
-	PlayerRef.AddItem(LAM_MaidSkirt, 1, abSilent=True);
+	PlayerRef.AddItem(LAM_MaidSkirt, 1, True);
 	PlayerRef.EquipItem(LAM_MaidSkirt, LockEquipment, True);
-	PlayerRef.AddItem(LAM_MaidPanty, 1, abSilent=True);
+	PlayerRef.AddItem(LAM_MaidPanty, 1, True);
 	PlayerRef.EquipItem(LAM_MaidPanty, LockEquipment, True);
 	Log("Maid uniform equipped!")
 EndFunction
