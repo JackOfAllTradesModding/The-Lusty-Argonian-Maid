@@ -79,13 +79,13 @@ State Running
 		;Alternatively, register for smaller updates, so if the game quits it doesn't take a theoretically infinite amount of time.
 		;With small steps can also check the weather and reset the timer if it's raining.
 		util.Log("Clothesline entering \"Running\" state, registering for update");
-		RegisterForUpdateGameTime(UpdateInterval);
+		RegisterForSingleUpdateGameTime(UpdateInterval);
 	EndEvent
 
 	Event OnPlayerLoadGame()
 		;Register for update game time to keep the clock ticking.
 		util.Log("Player loading game with clothesline in \"Running\" state, registering for update");
-		RegisterForUpdateGameTime(UpdateInterval);
+		RegisterForSingleUpdateGameTime(UpdateInterval);
 	EndEvent
 
 	Event OnUpdateGameTime()
@@ -96,8 +96,8 @@ State Running
 			util.Log("Timer complete, move to \"Done\" State");
 			GoToState("Done");
 		Else
-			util.Log("Not dry yet");
-			RegisterForUpdateGameTime(UpdateInterval);
+			util.Log("Not dry yet, registering for another update.");
+			RegisterForSingleUpdateGameTime(UpdateInterval);
 		EndIf
 	EndEvent
 
@@ -110,18 +110,33 @@ State Done
 	Event OnActivate(ObjectReference akActionRef)
 		;Check how long it's been done, if it's been there for a while certain events might happen. If you leave your laundry out all day it might get stolen.
 		;Remove apparent laundry, add clean laundry to inventory, update quest to put it back in the room.
+		
+		If LAM_ChoreLaundry.GetStage() == 50
+		
+		ElseIf LAM_MQ01.GetStage() == 110
+		
+		EndIf
 	EndEvent
 	
 	Event OnBeginState()
+		;Advance Quest Stage so objective updates.
+		
 		;Start a timer to see how long it's done before the player picks it up.
+		util.Log("Clothesline entering \"Done\" state, beginning update to see how long until the player got to it.");
+		RegisterForSingleUpdateGameTime(UpdateInterval);
 	EndEvent
 
 	Event OnPlayerLoadGame()
 		;Restart timer to keep it rolling
+		util.Log("Player loading game with clothesline in \"Done\" state, registering for update");
+		RegisterForSingleUpdateGameTime(UpdateInterval);
 	EndEvent
 
 	Event OnUpdateGameTime()
 		;Increment Timer
+		util.Log("Timer update on clothesline in \"Done\" State, inrementing timer.");
+		TimerCurrent += UpdateInterval;
+		RegisterForSingleUpdateGameTime(UpdateInterval);
 	EndEvent
 
 EndState 
