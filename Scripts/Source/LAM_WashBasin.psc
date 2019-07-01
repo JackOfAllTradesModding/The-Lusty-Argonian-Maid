@@ -30,7 +30,7 @@ Event OnActivate(ObjectReference akActionRef)
 		
 		;Remove the Dirty laundry
 		PlayerRef.RemoveItem(LAM_LaundryDirtyOrgnar.GetReference(), 1, False, LaundryBox);
-		PlayerRef.RemoveItem(LAM_LaundryDirtyPlayer.GetReference(), 1, False, LaundryBox);
+		;PlayerRef.RemoveItem(LAM_LaundryDirtyPlayer.GetReference(), 1, False, LaundryBox);
 		
 		;TODO: Play washing animation and wait.
 		
@@ -39,7 +39,7 @@ Event OnActivate(ObjectReference akActionRef)
 		
 		;Add the washed laundry
 		LaundryBox.RemoveItem(LAM_LaundryWashedOrgnar.GetReference(), 1, False, PlayerRef);
-		LaundryBox.RemoveItem(LAM_LaundryWashedPlayer.GetReference(), 1, False, PlayerRef);
+		;LaundryBox.RemoveItem(LAM_LaundryWashedPlayer.GetReference(), 1, False, PlayerRef);
 		
 		;Update the stage
 		LAM_MQ01.SetStage(90);
@@ -54,7 +54,7 @@ EndEvent
 
 Message Function WashingMessage()
 {Selects a random message to display about the washing}
-
+	
 EndFunction
 
 

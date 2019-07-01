@@ -8,6 +8,8 @@ ReferenceAlias Property LAM_HoldingCellMarker Auto; Holding cell to store things
 
 Explosion Property LAM_ExplosionTF Auto; The Hysteria Explosion effect (ExplosionIllusionMassiveDark) but with no force or damage, might shrink the radius too.
 Explosion Property LAM_ExplosionRevert Auto; The Harmony Explosion effect (ExplosionIllusionMassiveLigh01)
+
+
 Function Transform()
 	;Move Kassen to Vigilant
 	LAM_Kassen.GetReference().MoveTo(LAM_VigilantKassen.GetReference())

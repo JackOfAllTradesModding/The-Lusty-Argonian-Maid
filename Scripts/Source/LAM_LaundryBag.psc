@@ -10,9 +10,11 @@ Actor Property PlayerREF Auto;
 
 Event OnActivate(ObjectReference akActionRef)
 
-	If akActionRef == PlayerREF
+	;;FIXME - Wrap in check for laundry quest stage
+
+	If (akActionRef == PlayerREF) 
 		;Basically the broom static script, if the clean laundry is in the inventory, enable the static
-		If PlayerREF.GetItemCount(LAM_LaundryClean.GetReference()) > 0
+		If (PlayerREF.GetItemCount(LAM_LaundryClean.GetReference()) > 0) && (LAM_ChoreLaundry.GetStage() == 60)
 			util.Log("Player returning clean laundry, type " + LaundryType);
 			PlayerREF.RemoveItem(LAM_LaundryClean.GetReference(), 1, False, LaundryBox);
 			LaundryStatic.Enable();
@@ -21,7 +23,7 @@ Event OnActivate(ObjectReference akActionRef)
 			SetLaundryStage();
 			
 		;If the dirty laundry is not in their inventory, add it, 
-		ElseIf PlayerREF.GetItemCount(LAM_LaundryDirty.GetReference()) == 0
+		ElseIf (PlayerREF.GetItemCount(LAM_LaundryDirty.GetReference()) == 0) && (LAM_ChoreLaundry.GetStage() == 10)
 			util.Log("Player picking up dirty laundry, type " + LaundryType);
 			LaundryBox.RemoveItem(LAM_LaundryDirty.GetReference(), 1, False, PlayerREF);
 			LaundryStatic.Disable();
@@ -48,14 +50,15 @@ Function SetLaundryStage()
 	ElseIf (LAM_ChoreLaundry.GetStage() == 60) && (PlayerREF.GetItemCount(LAM_CleanLaundry) == 0)
 		LAM_ChoreLaundry.SetStage(70)
 		
+	;Tutorial laundry script moved to quest alias to remove this
 	;Check tutorial stage, only need player and orgnar's to advance from 70 to 80 to get, 110-120 to put back
-	ElseIf (LAM_MQ01.GetStage() == 70) && (PlayerREF.GetItemCount(LAM_DirtyLaundry) == 2)
+	;ElseIf (LAM_MQ01.GetStage() == 70) && (PlayerREF.GetItemCount(LAM_DirtyLaundry) == 2)
 		;If both are in inventory
-		LAM_MQ01.SetStage(80)
+	;	LAM_MQ01.SetStage(80)
 	
-	ElseIf (LAM_MQ01.GetStage() == 110) && (PlayerREF.GetItemCount(LAM_CleanLaundry) == 0)
+	;ElseIf (LAM_MQ01.GetStage() == 110) && (PlayerREF.GetItemCount(LAM_CleanLaundry) == 0)
 		;If neither are in inventory
-		LAM_MQ01.SetStage(120)
+	;	LAM_MQ01.SetStage(120)
 	Else
 	
 	

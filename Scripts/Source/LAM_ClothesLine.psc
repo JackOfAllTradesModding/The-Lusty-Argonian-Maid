@@ -39,10 +39,14 @@ Event OnActivate(ObjectReference akActionRef)
 		
 		GoToState("Running");
 	
-	ElseIf LAM_MQ01.GetStage() == 120 ;MQ Stage
-		;Remove player and Orgnar's laundry specifically
+	ElseIf LAM_MQ01.GetStage() == 90 ;MQ Stage
+		;;FIXME: Display message
+		;Remove Orgnar's laundry specifically
+		PlayerRef.RemoveItem(LAM_LaundryWashedOrgnar.GetReference(), 1, False, LaundryBox);
 		;Adv Stage
+		LAM_MQ01.SetStage(100);
 		;Running State
+		GoToState("Running");
 	Else
 		util.Log("Clothesline activated in empty state but no quest for laundry is in the correct stage.")
 		;Check inventory for washed laundry, could be state error
@@ -94,11 +98,25 @@ State Running
 		TimerCurrent += UpdateInterval; Increment
 		If TimerCurrent >= TimerMAX
 			util.Log("Timer complete, move to \"Done\" State");
+			;Advance Stage:
+			If LAM_ChoreLaundry.GetStage() == 40
+				;;FIXME
+			ElseIf LAM_MQ01.GetStage() == 100
+				LAM_MQ01.SetStage(110);
+			EndIf
 			GoToState("Done");
 		Else
 			util.Log("Not dry yet, registering for another update.");
 			RegisterForSingleUpdateGameTime(UpdateInterval);
 		EndIf
+		
+		;Advance Stage:
+		If LAM_ChoreLaundry.GetStage() == 40
+		
+		ElseIf LAM_MQ01.GetStage() == 100
+		
+		EndIf
+		
 	EndEvent
 
 EndState
@@ -114,8 +132,12 @@ State Done
 		If LAM_ChoreLaundry.GetStage() == 50
 		
 		ElseIf LAM_MQ01.GetStage() == 110
-		
+			;Return clothes
+			LaundryBox.RemoveItem(LAM_LaundryCleanOrgnar.GetReference(), 1, False, PlayerRef);
+			;Advance Quest
+			LAM_MQ01.SetStage(120);
 		EndIf
+		
 	EndEvent
 	
 	Event OnBeginState()
@@ -146,12 +168,10 @@ EndState
 ;More Properties
 
 ;Washed Laundry Aliases
-ReferenceAlias Property LAM_LaundryWashedPlayer Auto;
 ReferenceAlias Property LAM_LaundryWashedOrgnar Auto;
 KeyWord Property LAM_WetLaundry Auto;
 
 ;Clean/Dry Laundry Aliases
-ReferenceAlias Property LAM_LaundryCleanPlayer Auto;
 ReferenceAlias Property LAM_LaundryCleanOrgnar Auto;
 KeyWord Property LAM_CleanLaundry Auto;
 
