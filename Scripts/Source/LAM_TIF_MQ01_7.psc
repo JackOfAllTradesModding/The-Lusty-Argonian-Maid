@@ -6,9 +6,11 @@ Scriptname LAM_TIF_MQ01_7 Extends TopicInfo Hidden
 Function Fragment_0(ObjectReference akSpeakerRef)
 Actor akSpeaker = akSpeakerRef as Actor
 ;BEGIN CODE
-Self.GetOwningQuest().SetStage(70)
+LAM_MQ01_Msg6.Show()
 ;END CODE
 EndFunction
 ;END FRAGMENT
 
 ;END FRAGMENT CODE - Do not edit anything between this and the begin comment
+
+Message Property LAM_MQ01_Msg7  Auto  

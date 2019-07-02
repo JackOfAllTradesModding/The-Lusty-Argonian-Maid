@@ -30,7 +30,7 @@ Event OnMenuOpen(String MenuName)
 EndEvent
 
 Event OnMenuClose(String MenuName)
-	Utility.Wait(0.1);Just in case
+	Utility.Wait(0.1);Just in case. This is blocked by menus and will not complete until the menu is closed
 	RaceMenuOpen = False;
 	util.Log("RaceMenu closed!");
 EndEvent

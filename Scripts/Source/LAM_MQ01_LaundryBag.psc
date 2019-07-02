@@ -23,13 +23,12 @@ Event OnActivate(ObjectReference akActionRef)
 			LAM_MQ01.SetStage(80);
 			
 		;Putting Laundry back
-		ElseIf (LAM_MQ01.GetStage() == 110);;;
+		ElseIf (LAM_MQ01.GetStage() == 120)
 			util.Log("MQ01: Player putting back Orgnar's cleaned laundry");
 			PlayerRef.RemoveItem(LAM_LaundryCleanOrgnar.GetReference(), 1, False, LaundryBox.GetReference());
 			OrgnarLaundryBag.Enable();
-			LAM_MQ01.SetStage(120);
+			LAM_MQ01.SetStage(130);
 			
-			;Wrong Stage
 		Else
 			util.Log("MQ01: Player activating Orgnars Laundry in the wrong stage.");
 		
