@@ -35,7 +35,7 @@ Event OnActivate(ObjectReference akActionRef)
 		;TODO: Play washing animation and wait.
 		
 		;Show the message
-		LAM_MQ01LaundryMessage01.Show();
+		;LAM_MQ01LaundryMessage01.Show();
 		
 		;Add the washed laundry
 		LaundryBox.RemoveItem(LAM_LaundryWashedOrgnar.GetReference(), 1, False, PlayerRef);
