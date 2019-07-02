@@ -1,4 +1,6 @@
-Credits to :
+Firstly, thanks to ValSalia for the comic that inspired this dumb mod, and also the guy in the LL forum who said it was impossible causing me to program the TF out of spite.
+
+Credits for assets to :
 	Anano for creating the Osare Maid Outfit
 	InsanitySorrow for the original Laundry meshes/textures
 	Nerd of Prey for the updated versions from Immersive Laundry

@@ -27,4 +27,4 @@ Event OnActivate(ObjectReference akActionRef)
 			LAM_MQ01.SetStage(30)
 		EndIf
 	EndIf
-EndEvent
+EndEvent 

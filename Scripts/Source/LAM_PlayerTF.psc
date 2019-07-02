@@ -49,7 +49,7 @@ Function Transform()
 	PlayerRef.SetRace(ArgonianRace);
 	Utility.Wait(0.2);
 	While PlayerREF.GetRace() != ArgonianRace
-		Utility.Wait(0.1);No idea if this works or is necessary
+		Utility.Wait(0.1);No idea if this is necessary
 	EndWhile
 	util.Log("Race set to Argonian!");
 	
@@ -63,7 +63,7 @@ Function Transform()
 	PlayerRef.SetRace(ArgonianRaceVampire);
 	Utility.Wait(0.2)
 	While PlayerREF.GetRace() != ArgonianRaceVampire
-		Utility.Wait(0.1);No idea if this works or is necessary
+		Utility.Wait(0.1);No idea if this is necessary
 	EndWhile
 	util.Log("Race set to ArgonianVampire!")
 	
@@ -71,7 +71,7 @@ Function Transform()
 	PlayerRef.SetRace(ArgonianRace);
 	Utility.Wait(0.2)
 	While PlayerREF.GetRace() != ArgonianRace
-		Utility.Wait(0.1);No idea if this works or is necessary
+		Utility.Wait(0.1);No idea if this is necessary
 	EndWhile
 	util.Log("Race set to Argonian!")
 	

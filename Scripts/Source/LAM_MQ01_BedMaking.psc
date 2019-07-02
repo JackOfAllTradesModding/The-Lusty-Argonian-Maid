@@ -6,6 +6,8 @@ Message Property LAM_MQ01_BedMessage01 Auto;
 Message Property LAM_MQ01_BedMessage02 Auto;
 Message Property LAM_MQ01_BedMessage03 Auto;
 
+Quest Property LAM_MQ01 Auto;
+
 Bool Function NeedsTidying(Bool Dirty)
 	
 	If Dirty
@@ -31,7 +33,7 @@ Event OnActivate(ObjectReference akActionRef)
 			;Display messagebox about making it.
 			;Set it as cleaned. Advance MQ01
 			NeedsTidying(False)
-			;LAM_MQ01.SetStage()
+			LAM_MQ01.SetStage(60);
 		Else
 			;If Sleep:
 			LAM_MQ01_BedMessage03.Show();

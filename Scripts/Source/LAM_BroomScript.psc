@@ -33,4 +33,4 @@ Event OnActivate(ObjectReference akActionRef)
 		
 	;EndIf
 
-EndEvent
+EndEvent 

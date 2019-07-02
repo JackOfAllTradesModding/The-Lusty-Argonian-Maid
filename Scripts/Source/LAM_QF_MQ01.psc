@@ -1,30 +1,10 @@
 ;BEGIN FRAGMENT CODE - Do not edit anything between this and the end comment
-;NEXT FRAGMENT INDEX 12
+;NEXT FRAGMENT INDEX 36
 Scriptname LAM_QF_MQ01 Extends Quest Hidden
 
-;BEGIN ALIAS PROPERTY BedToMake01
+;BEGIN ALIAS PROPERTY Dust5
 ;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_BedToMake01 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY Dust3
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Dust3 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY Dust6
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Dust6 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY Orgnar
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Orgnar Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY BroomActivator
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_BroomActivator Auto
+ReferenceAlias Property Alias_Dust5 Auto
 ;END ALIAS PROPERTY
 
 ;BEGIN ALIAS PROPERTY Dust1
@@ -32,14 +12,29 @@ ReferenceAlias Property Alias_BroomActivator Auto
 ReferenceAlias Property Alias_Dust1 Auto
 ;END ALIAS PROPERTY
 
+;BEGIN ALIAS PROPERTY BroomActivator
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_BroomActivator Auto
+;END ALIAS PROPERTY
+
 ;BEGIN ALIAS PROPERTY Dust4
 ;ALIAS PROPERTY TYPE ReferenceAlias
 ReferenceAlias Property Alias_Dust4 Auto
 ;END ALIAS PROPERTY
 
-;BEGIN ALIAS PROPERTY Dust5
+;BEGIN ALIAS PROPERTY LaundryTub
 ;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Dust5 Auto
+ReferenceAlias Property Alias_LaundryTub Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY BedToMake01
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_BedToMake01 Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY IngredientBox
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_IngredientBox Auto
 ;END ALIAS PROPERTY
 
 ;BEGIN ALIAS PROPERTY CookingPot
@@ -47,13 +42,43 @@ ReferenceAlias Property Alias_Dust5 Auto
 ReferenceAlias Property Alias_CookingPot Auto
 ;END ALIAS PROPERTY
 
+;BEGIN ALIAS PROPERTY Orgnar
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_Orgnar Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY LaundryClothesline
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_LaundryClothesline Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY Dust6
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_Dust6 Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY Dust3
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_Dust3 Auto
+;END ALIAS PROPERTY
+
 ;BEGIN ALIAS PROPERTY Dust2
 ;ALIAS PROPERTY TYPE ReferenceAlias
 ReferenceAlias Property Alias_Dust2 Auto
 ;END ALIAS PROPERTY
 
-;BEGIN FRAGMENT Fragment_7
-Function Fragment_7()
+;BEGIN ALIAS PROPERTY LaundryStatic
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_LaundryStatic Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY LaundryActivator
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_LaundryActivator Auto
+;END ALIAS PROPERTY
+
+;BEGIN FRAGMENT Fragment_27
+Function Fragment_27()
 ;BEGIN CODE
 setObjectiveCompleted(40)
 
@@ -66,28 +91,30 @@ util.Log("LAM_MQ01: Stage 50")
 EndFunction
 ;END FRAGMENT
 
-;BEGIN FRAGMENT Fragment_10
-Function Fragment_10()
+;BEGIN FRAGMENT Fragment_31
+Function Fragment_31()
 ;BEGIN CODE
-SetObjectiveCompleted(60)
-SetObjectiveDisplayed(70)
-util.Log("LAM_MQ01: Stage 70")
+LAM_MQ01_Msg8.Show()
+SetObjectiveCompleted(80)
+SetObjectiveDisplayed(90)
+util.Log("LAM_MQ01: Stage 90")
 ;END CODE
 EndFunction
 ;END FRAGMENT
 
-;BEGIN FRAGMENT Fragment_5
-Function Fragment_5()
+;BEGIN FRAGMENT Fragment_35
+Function Fragment_35()
 ;BEGIN CODE
-SetObjectiveCompleted(20)
-SetObjectiveDisplayed(30)
-util.Log("LAM_MQ01: Stage 30")
+LAM_MQ01_Msg10.Show()
+SetObjectiveCompleted(120);
+SetObjectiveDisplayed(130)
+util.Log("LAM_MQ01: Stage 130");
 ;END CODE
 EndFunction
 ;END FRAGMENT
 
-;BEGIN FRAGMENT Fragment_3
-Function Fragment_3()
+;BEGIN FRAGMENT Fragment_24
+Function Fragment_24()
 ;BEGIN CODE
 Alias_Dust1.GetReference().Enable()
 Alias_Dust2.GetReference().Enable()
@@ -102,8 +129,17 @@ util.Log("LAM_MQ01: Stage 20")
 EndFunction
 ;END FRAGMENT
 
-;BEGIN FRAGMENT Fragment_6
-Function Fragment_6()
+;BEGIN FRAGMENT Fragment_23
+Function Fragment_23()
+;BEGIN CODE
+SetObjectiveDisplayed(10)
+util.Log("LAM_MQ01: Stage 10")
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_26
+Function Fragment_26()
 ;BEGIN CODE
 setObjectiveCompleted(30)
 setObjectiveDisplayed(40)
@@ -112,8 +148,51 @@ util.Log("LAM_MQ01: Stage 40")
 EndFunction
 ;END FRAGMENT
 
-;BEGIN FRAGMENT Fragment_8
-Function Fragment_8()
+;BEGIN FRAGMENT Fragment_29
+Function Fragment_29()
+;BEGIN CODE
+SetObjectiveCompleted(60)
+SetObjectiveDisplayed(70)
+util.Log("LAM_MQ01: Stage 70")
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_25
+Function Fragment_25()
+;BEGIN CODE
+LAM_MQ01_Msg5.Show();
+SetObjectiveCompleted(20)
+SetObjectiveDisplayed(30)
+util.Log("LAM_MQ01: Stage 30")
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_32
+Function Fragment_32()
+;BEGIN CODE
+LAM_MQ01_Msg9.Show()
+SetObjectiveCompleted(90)
+SetObjectiveDisplayed(100)
+util.Log("LAM_MQ01: Stage 100")
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_30
+Function Fragment_30()
+;BEGIN CODE
+LAM_MQ01_Msg7.Show()
+SetObjectiveCompleted(70)
+SetObjectiveDisplayed(80)
+util.Log("LAM_MQ01: Stage 80")
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_28
+Function Fragment_28()
 ;BEGIN CODE
 SetObjectiveCompleted(50)
 SetObjectiveDisplayed(60)
@@ -122,8 +201,28 @@ util.Log("LAM_MQ01: Stage 60")
 EndFunction
 ;END FRAGMENT
 
-;BEGIN FRAGMENT Fragment_0
-Function Fragment_0()
+;BEGIN FRAGMENT Fragment_33
+Function Fragment_33()
+;BEGIN CODE
+SetObjectiveCompleted(100)
+SetObjectiveDisplayed(110)
+util.Log("LAM_MQ01: Stage 110")
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_34
+Function Fragment_34()
+;BEGIN CODE
+SetObjectiveCompleted(110)
+SetObjectiveDisplayed(120)
+util.Log("LAM_MQ01: Stage 120")
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_22
+Function Fragment_22()
 ;BEGIN CODE
 ;Game.SetPlayerAIDriven(False);
 Game.EnablePlayerControls()
@@ -137,15 +236,6 @@ util.Log("LAM_MQ01: Stage 0")
 EndFunction
 ;END FRAGMENT
 
-;BEGIN FRAGMENT Fragment_1
-Function Fragment_1()
-;BEGIN CODE
-SetObjectiveDisplayed(10)
-util.Log("LAM_MQ01: Stage 10")
-;END CODE
-EndFunction
-;END FRAGMENT
-
 ;END FRAGMENT CODE - Do not edit anything between this and the begin comment
 
 LAM_Util Property util  Auto  
@@ -153,3 +243,13 @@ LAM_Util Property util  Auto
 LAM_MQ01_BedMaking Property BedScript  Auto  
 
 ReferenceAlias Property Core_PlayerAlias  Auto  
+
+Message Property LAM_MQ01_Msg5  Auto  
+
+Message Property LAM_MQ01_Msg7  Auto  
+
+Message Property LAM_MQ01_Msg8  Auto 
+ 
+Message Property LAM_MQ01_Msg9  Auto 
+ 
+Message Property LAM_MQ01_Msg10  Auto  
