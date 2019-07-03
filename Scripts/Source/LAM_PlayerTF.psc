@@ -25,13 +25,55 @@ Function Transform()
 	PlayerName = PlayerREF.GetActorBase().GetName();
 	util.Log("Player name (" + PlayerName + ") saved!");
 	
+	Debug.ToggleMenus();
 	;Sex
-	If PlayerREF.GetActorBase().GetSex() != 1;
-		ConsoleUtil.ExecuteCommand("Player.SexChange");
+	While PlayerREF.GetActorBase().GetSex() != 1;
+		;ConsoleUtil.ExecuteCommand("Player.SexChange"); ;;FIXME: Insert check for ConsoleUtil in QoL update
+		
+		Input.TapKey(41); ~ (open console)
+		Utility.WaitMenuMode(0.01)
+		Input.TapKey(25); P
+		Utility.WaitMenuMode(0.01)
+		Input.TapKey(38); L
+		Utility.WaitMenuMode(0.01)
+		Input.TapKey(30); A
+		Utility.WaitMenuMode(0.01)
+		Input.TapKey(21); Y
+		Utility.WaitMenuMode(0.01)
+		Input.TapKey(18); E
+		Utility.WaitMenuMode(0.01)
+		Input.TapKey(19); R
+		Utility.WaitMenuMode(0.01)
+		Input.TapKey(52); .
+		Utility.WaitMenuMode(0.01)
+		Input.TapKey(31); S
+		Utility.WaitMenuMode(0.01)
+		Input.TapKey(18); E
+		Utility.WaitMenuMode(0.01)
+		Input.TapKey(45); X
+		Utility.WaitMenuMode(0.01)
+		Input.TapKey(46); C
+		Utility.WaitMenuMode(0.01)
+		Input.TapKey(35); H
+		Utility.WaitMenuMode(0.01)
+		Input.TapKey(30); A
+		Utility.WaitMenuMode(0.01)
+		Input.TapKey(49); N
+		Utility.WaitMenuMode(0.01)
+		Input.TapKey(34); G
+		Utility.WaitMenuMode(0.01)
+		Input.TapKey(18); E
+		Utility.WaitMenuMode(0.02)
+		
+		Input.TapKey(28); Return
+		Utility.WaitMenuMode(0.02)
+		Input.TapKey(41);
+		
 		SexChanged = True;
 		util.Log("Player sex changed!");
-	EndIf
-	
+	EndWhile
+	;Input.TapKey(41); ~ (open console)
+		
 	;Height/Weight
 	
 	;Get/Backup AV's
@@ -82,7 +124,6 @@ Function Transform()
 	
 	;Disable menus and then open and close RaceMenu, otherwise the normal and specular maps don't update properly for some reason and the heads gets plasticky and smooth.
 	util.Log("Hiding menus and opening the racemenu...");
-	Debug.ToggleMenus();
 	;Utility.WaitMenuMode(0.5);
 	Game.ShowRaceMenu();
 	Utility.WaitMenuMode(0.5); 
