@@ -67,7 +67,7 @@ Function Transform()
 		
 		Input.TapKey(28); Return
 		Utility.WaitMenuMode(0.02)
-		Input.TapKey(41);
+		Input.TapKey(41); ~ (close console)
 		
 		SexChanged = True;
 		util.Log("Player sex changed!");
