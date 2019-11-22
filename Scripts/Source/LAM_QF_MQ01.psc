@@ -228,7 +228,8 @@ Function Fragment_22()
 Game.EnablePlayerControls()
 SetObjectiveDisplayed(0)
 Util.EquipMaidOutfit();
-Util.FadeFromBlack()
+;Util.FadeFromBlack()
+PlayerTF.WrapUp();
 ;And put player into PlayerAlias on Core quest, blank by default.
 Core_PlayerAlias.ForceRefTo(Game.GetPlayer())
 util.Log("LAM_MQ01: Stage 0")
@@ -253,3 +254,5 @@ Message Property LAM_MQ01_Msg8  Auto
 Message Property LAM_MQ01_Msg9  Auto 
  
 Message Property LAM_MQ01_Msg10  Auto  
+
+LAM_PlayerTF Property PlayerTF  Auto  

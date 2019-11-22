@@ -20,7 +20,7 @@ Function Transform()
 	;PlayerREF.PlaceAtMe(LAM_ExplosionTF)
 	
 	util.Log("Beginning Player TF code...")
-	
+	Game.EnablePlayerControls();
 	;Backup Name
 	PlayerName = PlayerREF.GetActorBase().GetName();
 	util.Log("Player name (" + PlayerName + ") saved!");
@@ -67,7 +67,7 @@ Function Transform()
 		
 		Input.TapKey(28); Return
 		Utility.WaitMenuMode(0.02)
-		Input.TapKey(41);
+		Input.TapKey(41); ~ (close console)
 		
 		SexChanged = True;
 		util.Log("Player sex changed!");
@@ -120,33 +120,51 @@ Function Transform()
 	PlayerREF.QueueNiNodeUpdate(); Not sure if this is actually necessary
 
 	;Get key for sheath
-	Int RKey = Input.GetMappedKey("Ready Weapon"); May need to add support for gamepads later. Will wait for bug reports
+	;Int RKey = Input.GetMappedKey("Ready Weapon"); May need to add support for gamepads later. Will wait for bug reports
 	
 	;Disable menus and then open and close RaceMenu, otherwise the normal and specular maps don't update properly for some reason and the heads gets plasticky and smooth.
-	util.Log("Hiding menus and opening the racemenu...");
+	;NOTE: cannot exit naming confirmation without "Better MessageBox Controls" Installed, rendering this code inoperational without requiring an unrelated utility. Solution: Show limited race menu, let player change it if they want.
 	;Utility.WaitMenuMode(0.5);
-	Game.ShowRaceMenu();
-	Utility.WaitMenuMode(0.5); 
-	Input.TapKey(RKey);Since R is only pressed once there's a chance that it gets stuck forever. So if the loop seems to be sticking it will press R.
-	util.Log("R key press sent once.");
-	int i = 0
-	While Semaphore.RaceMenuOpen ;Uses a semaphore to figure out when the menu is actually closed to avoid artificial latency
-		Utility.WaitMenuMode(0.1)
-		Input.TapKey(28);
-		util.Log("Enter key pressed " + (i+1) + " times...");
-		i += 1
-		If (i % 5 == 0)
-			Input.TapKey(RKey)
-			util.Log("R key pressed " + (i/5) + " times...");
-		EndIf
-	EndWhile
-	util.Log("RaceMenu has closed, unhiding menus...")
+	;Game.ShowRaceMenu();
+	;Utility.WaitMenuMode(10.5); 
+	;Input.TapKey(RKey);Since R is only pressed once there's a chance that it gets stuck forever. So if the loop seems to be sticking it will press R.
+	
+	;util.Log("RaceMenu Opened from TF script.");
+	;int i = 0
+	;While Semaphore.RaceMenuOpen ;Uses a semaphore to figure out when the menu is actually closed to avoid artificial latency
+	;	Utility.WaitMenuMode(0.3)
+	;	Input.TapKey(28);
+	;	util.Log("Enter key pressed " + (i+1) + " times...");
+	;	i += 1
+	;	If (i % 5 == 0)
+	;		Input.TapKey(RKey)
+	;		util.Log("R key pressed " + (i/5) + " times...");
+	;	EndIf
+	;EndWhile
+	;util.Log("RaceMenu has closed, unhiding menus...")
+	
+	util.Log("setting menus to visible...");
 	Debug.ToggleMenus();
 	
 	;Change player name
 	PlayerREF.GetActorBase().SetName("Lifts-Her-Tail");
 	util.Log("Player's name set to " + PlayerREF.GetActorBase().GetName() + "!");
 	
-	util.Log("TF Code done running, enjoy your time as a maid!")
+	util.Log("TF main Code done running, enjoy your time as a maid!")
 	
 EndFunction 
+
+Function WrapUp()
+	util.Log("Tf Wrap-up code called. Displaying flavortext/hint and opening limted race menu for both geometry correction and minor cosmetic adjustments if desired.");
+	
+	util.FadeFromBlack()
+	Utility.Wait(2.5);
+	;;FIXME: Display messagebox
+	Game.ShowLimitedRaceMenu();
+	;;FIXME: Test if possible in non DG game
+	While Semaphore.RaceMenuOpen
+		util.Log("TF Script halted by semaphore...");
+		Utility.Wait(0.1);
+	EndWhile
+	util.Log("Semaphore released, TF script finished");
+EndFunction
