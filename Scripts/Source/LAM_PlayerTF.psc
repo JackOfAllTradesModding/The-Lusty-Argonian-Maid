@@ -25,7 +25,7 @@ Function Transform()
 	PlayerName = PlayerREF.GetActorBase().GetName();
 	util.Log("Player name (" + PlayerName + ") saved!");
 	
-	;Debug.ToggleMenus();
+	Debug.ToggleMenus();
 	;Sex
 	While PlayerREF.GetActorBase().GetSex() != 1;
 		;ConsoleUtil.ExecuteCommand("Player.SexChange"); ;;FIXME: Insert check for ConsoleUtil in QoL update
@@ -120,10 +120,10 @@ Function Transform()
 	PlayerREF.QueueNiNodeUpdate(); Not sure if this is actually necessary
 
 	;Get key for sheath
-	Int RKey = Input.GetMappedKey("Ready Weapon"); May need to add support for gamepads later. Will wait for bug reports
+	;Int RKey = Input.GetMappedKey("Ready Weapon"); May need to add support for gamepads later. Will wait for bug reports
 	
 	;Disable menus and then open and close RaceMenu, otherwise the normal and specular maps don't update properly for some reason and the heads gets plasticky and smooth.
-	util.Log("setting menus to visible...");
+	;NOTE: cannot exit naming confirmation without "Better MessageBox Controls" Installed, rendering this code inoperational without requiring an unrelated utility. Solution: Show limited race menu, let player change it if they want.
 	;Utility.WaitMenuMode(0.5);
 	;Game.ShowRaceMenu();
 	;Utility.WaitMenuMode(10.5); 
@@ -142,7 +142,9 @@ Function Transform()
 	;	EndIf
 	;EndWhile
 	;util.Log("RaceMenu has closed, unhiding menus...")
-	;Debug.ToggleMenus();
+	
+	util.Log("setting menus to visible...");
+	Debug.ToggleMenus();
 	
 	;Change player name
 	PlayerREF.GetActorBase().SetName("Lifts-Her-Tail");
@@ -155,9 +157,11 @@ EndFunction
 Function WrapUp()
 	util.Log("Tf Wrap-up code called. Displaying flavortext/hint and opening limted race menu for both geometry correction and minor cosmetic adjustments if desired.");
 	
+	util.FadeFromBlack()
+	Utility.Wait(2.5);
+	;;FIXME: Display messagebox
 	Game.ShowLimitedRaceMenu();
 	;;FIXME: Test if possible in non DG game
-	util.FadeFromBlack()
 	While Semaphore.RaceMenuOpen
 		util.Log("TF Script halted by semaphore...");
 		Utility.Wait(0.1);
