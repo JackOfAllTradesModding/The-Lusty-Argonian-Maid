@@ -40,7 +40,8 @@ Event OnActivate(ObjectReference akActionRef)
 		GoToState("Running");
 	
 	ElseIf LAM_MQ01.GetStage() == 90 ;MQ Stage
-		;;FIXME: Display message
+		
+		LAM_MQ01LaundryMessage01.Show();
 		;Remove Orgnar's laundry specifically
 		PlayerRef.RemoveItem(LAM_LaundryWashedOrgnar.GetReference(), 1, False, LaundryBox);
 		;Adv Stage
@@ -114,7 +115,8 @@ State Running
 		If LAM_ChoreLaundry.GetStage() == 40
 		
 		ElseIf LAM_MQ01.GetStage() == 100
-		
+			LAM_MQ01LaundryMessage02.Show();
+			LAM_MQ01.SetStage(110)
 		EndIf
 		
 	EndEvent
@@ -132,6 +134,7 @@ State Done
 		If LAM_ChoreLaundry.GetStage() == 50
 		
 		ElseIf LAM_MQ01.GetStage() == 110
+			LAM_MQ01LaundryMessage03.Show();
 			;Return clothes
 			LaundryBox.RemoveItem(LAM_LaundryCleanOrgnar.GetReference(), 1, False, PlayerRef);
 			;Advance Quest
@@ -179,6 +182,8 @@ Message[] Property LAM_LaundryMessages Auto;
 {Array holding the laundry messages to randomly select and play}
 
 Message Property LAM_MQ01LaundryMessage01 Auto; Messages to display during the tutorial quest
+Message Property LAM_MQ01LaundryMessage02 Auto; Messages to display during the tutorial quest
+Message Property LAM_MQ01LaundryMessage03 Auto; Messages to display during the tutorial quest
 
 ;Hidden box for laundry items
 ObjectReference Property LaundryBox  Auto; 
