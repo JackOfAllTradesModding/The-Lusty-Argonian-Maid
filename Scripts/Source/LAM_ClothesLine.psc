@@ -41,6 +41,8 @@ Event OnActivate(ObjectReference akActionRef)
 	
 	ElseIf LAM_MQ01.GetStage() == 90 ;MQ Stage
 		
+		util.Log("Player washing Orgnar's laundry for MQ01.");
+		
 		LAM_MQ01LaundryMessage01.Show();
 		;Remove Orgnar's laundry specifically
 		PlayerRef.RemoveItem(LAM_LaundryWashedOrgnar.GetReference(), 1, False, LaundryBox);
@@ -130,6 +132,7 @@ State Done
 	Event OnActivate(ObjectReference akActionRef)
 		;Check how long it's been done, if it's been there for a while certain events might happen. If you leave your laundry out all day it might get stolen.
 		;Remove apparent laundry, add clean laundry to inventory, update quest to put it back in the room.
+		util.Log("Player activating dried laundry...");
 		
 		If LAM_ChoreLaundry.GetStage() == 50
 		
