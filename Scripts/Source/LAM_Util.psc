@@ -76,10 +76,10 @@ Function Log(String text, Bool Error = False)
 	;Custom user log should be LAM_log.X
 	;Log should always be open if enabled.
 	
-	If error && (LAM_TraceLogging.GetValue() == 0)
+	If Error && (LAM_TraceLogging.GetValue() == 0)
 		;Error log but no userlog, just trace
 		Debug.Trace("LAM ERROR: " + text);
-	ElseIf error
+	ElseIf Error
 		;Error log but userlog is open
 		Debug.OpenUserLog(LogName)
 		Debug.TraceUser(LogName, "ERROR: " + text, 2);
@@ -90,4 +90,9 @@ Function Log(String text, Bool Error = False)
 	Else
 		;No point to trace this shit, this condition just exists for my own completionist tendencies
 	EndIf
+EndFunction
+
+;End of Content Popup
+Function EoC(String version)
+	Debug.MessageBox("You have reached the end of content for version " + version + "! Thank you for playing, please let Feliks know what you thought or if you encountered any issues!");
 EndFunction

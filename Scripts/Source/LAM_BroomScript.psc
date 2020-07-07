@@ -18,12 +18,12 @@ Event OnActivate(ObjectReference akActionRef)
 	;If akActionRef == PlayerREF
 		If PlayerREF.GetItemCount(Broom.GetReference()) > 0
 			;Put it back
-			util.Log("Player picking up broom!")
+			util.Log("Player putting down broom!")
 			PlayerREF.RemoveItem(Broom.GetReference(), 1, False, BroomBox)
 			BroomStatic.Enable()
 		Else
 			;Pick it up
-			util.Log("Player putting down broom!")
+			util.Log("Player picking up broom!")
 			BroomBox.RemoveItem(Broom.GetReference(), 1, False, PlayerREF)
 			BroomStatic.Disable()
 			If LAM_MQ01.GetStage() == 10
