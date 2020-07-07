@@ -91,3 +91,8 @@ Function Log(String text, Bool Error = False)
 		;No point to trace this shit, this condition just exists for my own completionist tendencies
 	EndIf
 EndFunction
+
+;End of Content Popup
+Function EoC(String version)
+	Debug.MessageBox("You have reached the end of content for version " + version + "! Thank you for playing, please let Feliks know what you thought or if you encountered any issues!");
+EndFunction

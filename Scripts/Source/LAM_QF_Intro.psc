@@ -114,9 +114,9 @@ EndFunction
 ;BEGIN FRAGMENT Fragment_12
 Function Fragment_12()
 ;BEGIN CODE
-Alias_CultistLeader.GetActorReference().SetAlpha(0)
-Alias_Cultist01.GetActorReference().SetAlpha(0)
-Alias_Cultist02.GetActorReference().SetAlpha(0)
+;Alias_CultistLeader.GetActorReference().SetAlpha(0)
+;Alias_Cultist01.GetActorReference().SetAlpha(0)
+;Alias_Cultist02.GetActorReference().SetAlpha(0)
 util.Log("LAM_Intro: Stage 0")
 ;END CODE
 EndFunction
@@ -130,7 +130,7 @@ SetObjectiveCompleted(5)
 EndIf
 SetObjectiveDisplayed(0)
 util.Log("LAM_Intro: Stage 10")
-Alias_CaveDoor.GetReference().SetLockLevel(1);
+Alias_CaveDoor.GetReference().Lock(False, True);
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -164,6 +164,9 @@ Alias_VigilantKassen.GetReference().MoveTo(Alias_HoldingCellMarker.GetReference(
 Alias_VigilantKassen.GetReference().Disable()
 ;Move Player to sleeping giant marker
 Alias_PlayerRef.GetReference().MoveTo(Alias_SleepingGiantMarker.GetReference())
+;Lock cave door
+Alias_CaveDoor.GetReference().Lock(True, True);
+Alias_CaveDoor.GetReference().SetLockLevel(255);
 ;Start MQ01
 LAM_MQ01.Start()
 ;END CODE

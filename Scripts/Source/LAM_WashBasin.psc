@@ -1,4 +1,4 @@
-ScriptName LAM_WashBasin Extends Activator
+ScriptName LAM_WashBasin Extends ObjectReference
 {Removes dirty laundry from your inventory to give you wet laundry}
 
 Quest Property LAM_ChoreLaundry Auto;

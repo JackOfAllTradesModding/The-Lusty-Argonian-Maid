@@ -1,4 +1,4 @@
-ScriptName LAM_ClothesLine Extends Activator
+ScriptName LAM_ClothesLine Extends ObjectReference
 {Removes wet laundry from your inventory to hang and dry}
 
 ;This one is a bit complicated compared to the others.
@@ -105,6 +105,7 @@ State Running
 			If LAM_ChoreLaundry.GetStage() == 40
 				;;FIXME
 			ElseIf LAM_MQ01.GetStage() == 100
+				LAM_MQ01LaundryMessage02.Show();
 				LAM_MQ01.SetStage(110);
 			EndIf
 			GoToState("Done");
@@ -114,12 +115,13 @@ State Running
 		EndIf
 		
 		;Advance Stage:
-		If LAM_ChoreLaundry.GetStage() == 40
+		;If LAM_ChoreLaundry.GetStage() == 40
 		
-		ElseIf LAM_MQ01.GetStage() == 100
-			LAM_MQ01LaundryMessage02.Show();
-			LAM_MQ01.SetStage(110)
-		EndIf
+		;ElseIf LAM_MQ01.GetStage() == 100
+		;	LAM_MQ01LaundryMessage02.Show();
+		;	LAM_MQ01.SetStage(110)
+		;	GoToState("Done");
+		;EndIf
 		
 	EndEvent
 

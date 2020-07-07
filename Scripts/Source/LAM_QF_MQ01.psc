@@ -2,54 +2,9 @@
 ;NEXT FRAGMENT INDEX 36
 Scriptname LAM_QF_MQ01 Extends Quest Hidden
 
-;BEGIN ALIAS PROPERTY Dust5
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Dust5 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY Dust1
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Dust1 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY BroomActivator
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_BroomActivator Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY Dust4
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Dust4 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY LaundryTub
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_LaundryTub Auto
-;END ALIAS PROPERTY
-
 ;BEGIN ALIAS PROPERTY BedToMake01
 ;ALIAS PROPERTY TYPE ReferenceAlias
 ReferenceAlias Property Alias_BedToMake01 Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY IngredientBox
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_IngredientBox Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY CookingPot
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_CookingPot Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY Orgnar
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Orgnar Auto
-;END ALIAS PROPERTY
-
-;BEGIN ALIAS PROPERTY LaundryClothesline
-;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_LaundryClothesline Auto
 ;END ALIAS PROPERTY
 
 ;BEGIN ALIAS PROPERTY Dust6
@@ -57,9 +12,9 @@ ReferenceAlias Property Alias_LaundryClothesline Auto
 ReferenceAlias Property Alias_Dust6 Auto
 ;END ALIAS PROPERTY
 
-;BEGIN ALIAS PROPERTY Dust3
+;BEGIN ALIAS PROPERTY IngredientBox
 ;ALIAS PROPERTY TYPE ReferenceAlias
-ReferenceAlias Property Alias_Dust3 Auto
+ReferenceAlias Property Alias_IngredientBox Auto
 ;END ALIAS PROPERTY
 
 ;BEGIN ALIAS PROPERTY Dust2
@@ -67,9 +22,44 @@ ReferenceAlias Property Alias_Dust3 Auto
 ReferenceAlias Property Alias_Dust2 Auto
 ;END ALIAS PROPERTY
 
+;BEGIN ALIAS PROPERTY Dust3
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_Dust3 Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY LaundryTub
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_LaundryTub Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY Orgnar
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_Orgnar Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY Dust4
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_Dust4 Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY Dust5
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_Dust5 Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY CookingPot
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_CookingPot Auto
+;END ALIAS PROPERTY
+
 ;BEGIN ALIAS PROPERTY LaundryStatic
 ;ALIAS PROPERTY TYPE ReferenceAlias
 ReferenceAlias Property Alias_LaundryStatic Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY Dust1
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_Dust1 Auto
 ;END ALIAS PROPERTY
 
 ;BEGIN ALIAS PROPERTY LaundryActivator
@@ -77,38 +67,33 @@ ReferenceAlias Property Alias_LaundryStatic Auto
 ReferenceAlias Property Alias_LaundryActivator Auto
 ;END ALIAS PROPERTY
 
-;BEGIN FRAGMENT Fragment_27
-Function Fragment_27()
+;BEGIN ALIAS PROPERTY BroomActivator
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_BroomActivator Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY LaundryClothesline
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_LaundryClothesline Auto
+;END ALIAS PROPERTY
+
+;BEGIN FRAGMENT Fragment_34
+Function Fragment_34()
 ;BEGIN CODE
-setObjectiveCompleted(40)
-
-;Set bed as needing to be made
-BedScript.NeedsTidying(True);
-
-setObjectiveDisplayed(50)
-util.Log("LAM_MQ01: Stage 50")
+SetObjectiveCompleted(110)
+SetObjectiveDisplayed(120)
+util.Log("LAM_MQ01: Stage 120")
 ;END CODE
 EndFunction
 ;END FRAGMENT
 
-;BEGIN FRAGMENT Fragment_31
-Function Fragment_31()
+;BEGIN FRAGMENT Fragment_29
+Function Fragment_29()
 ;BEGIN CODE
-LAM_MQ01_Msg8.Show()
-SetObjectiveCompleted(80)
-SetObjectiveDisplayed(90)
-util.Log("LAM_MQ01: Stage 90")
-;END CODE
-EndFunction
-;END FRAGMENT
-
-;BEGIN FRAGMENT Fragment_35
-Function Fragment_35()
-;BEGIN CODE
-LAM_MQ01_Msg10.Show()
-SetObjectiveCompleted(120);
-SetObjectiveDisplayed(130)
-util.Log("LAM_MQ01: Stage 130");
+SetObjectiveCompleted(60)
+Alias_LaundryActivator.GetReference().Enable();
+SetObjectiveDisplayed(70)
+util.Log("LAM_MQ01: Stage 70")
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -129,53 +114,45 @@ util.Log("LAM_MQ01: Stage 20")
 EndFunction
 ;END FRAGMENT
 
+;BEGIN FRAGMENT Fragment_28
+Function Fragment_28()
+;BEGIN CODE
+SetObjectiveCompleted(50)
+SetObjectiveDisplayed(60)
+util.Log("LAM_MQ01: Stage 60")
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_35
+Function Fragment_35()
+;BEGIN CODE
+LAM_MQ01_Msg10.Show()
+SetObjectiveCompleted(120);
+SetObjectiveDisplayed(130)
+util.Log("LAM_MQ01: Stage 130");
+util.EoC("0.7");
+;END CODE
+EndFunction
+;END FRAGMENT
+
 ;BEGIN FRAGMENT Fragment_23
 Function Fragment_23()
 ;BEGIN CODE
+SetObjectiveCompleted(0)
 SetObjectiveDisplayed(10)
 util.Log("LAM_MQ01: Stage 10")
 ;END CODE
 EndFunction
 ;END FRAGMENT
 
-;BEGIN FRAGMENT Fragment_26
-Function Fragment_26()
+;BEGIN FRAGMENT Fragment_31
+Function Fragment_31()
 ;BEGIN CODE
-setObjectiveCompleted(30)
-setObjectiveDisplayed(40)
-util.Log("LAM_MQ01: Stage 40")
-;END CODE
-EndFunction
-;END FRAGMENT
-
-;BEGIN FRAGMENT Fragment_29
-Function Fragment_29()
-;BEGIN CODE
-SetObjectiveCompleted(60)
-SetObjectiveDisplayed(70)
-util.Log("LAM_MQ01: Stage 70")
-;END CODE
-EndFunction
-;END FRAGMENT
-
-;BEGIN FRAGMENT Fragment_25
-Function Fragment_25()
-;BEGIN CODE
-LAM_MQ01_Msg5.Show();
-SetObjectiveCompleted(20)
-SetObjectiveDisplayed(30)
-util.Log("LAM_MQ01: Stage 30")
-;END CODE
-EndFunction
-;END FRAGMENT
-
-;BEGIN FRAGMENT Fragment_32
-Function Fragment_32()
-;BEGIN CODE
-LAM_MQ01_Msg9.Show()
-SetObjectiveCompleted(90)
-SetObjectiveDisplayed(100)
-util.Log("LAM_MQ01: Stage 100")
+LAM_MQ01_Msg8.Show()
+SetObjectiveCompleted(80)
+SetObjectiveDisplayed(90)
+util.Log("LAM_MQ01: Stage 90")
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -191,16 +168,6 @@ util.Log("LAM_MQ01: Stage 80")
 EndFunction
 ;END FRAGMENT
 
-;BEGIN FRAGMENT Fragment_28
-Function Fragment_28()
-;BEGIN CODE
-SetObjectiveCompleted(50)
-SetObjectiveDisplayed(60)
-util.Log("LAM_MQ01: Stage 60")
-;END CODE
-EndFunction
-;END FRAGMENT
-
 ;BEGIN FRAGMENT Fragment_33
 Function Fragment_33()
 ;BEGIN CODE
@@ -211,12 +178,24 @@ util.Log("LAM_MQ01: Stage 110")
 EndFunction
 ;END FRAGMENT
 
-;BEGIN FRAGMENT Fragment_34
-Function Fragment_34()
+;BEGIN FRAGMENT Fragment_32
+Function Fragment_32()
 ;BEGIN CODE
-SetObjectiveCompleted(110)
-SetObjectiveDisplayed(120)
-util.Log("LAM_MQ01: Stage 120")
+LAM_MQ01_Msg9.Show()
+SetObjectiveCompleted(90)
+SetObjectiveDisplayed(100)
+util.Log("LAM_MQ01: Stage 100")
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_25
+Function Fragment_25()
+;BEGIN CODE
+LAM_MQ01_Msg5.Show();
+SetObjectiveCompleted(20)
+SetObjectiveDisplayed(30)
+util.Log("LAM_MQ01: Stage 30")
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -225,14 +204,37 @@ EndFunction
 Function Fragment_22()
 ;BEGIN CODE
 ;Game.SetPlayerAIDriven(False);
-Game.EnablePlayerControls()
-SetObjectiveDisplayed(0)
+Game.EnablePlayerControls();
 Util.EquipMaidOutfit();
-;Util.FadeFromBlack()
 PlayerTF.WrapUp();
 ;And put player into PlayerAlias on Core quest, blank by default.
+SetObjectiveDisplayed(0)
 Core_PlayerAlias.ForceRefTo(Game.GetPlayer())
 util.Log("LAM_MQ01: Stage 0")
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_26
+Function Fragment_26()
+;BEGIN CODE
+setObjectiveCompleted(30)
+setObjectiveDisplayed(40)
+util.Log("LAM_MQ01: Stage 40")
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_27
+Function Fragment_27()
+;BEGIN CODE
+setObjectiveCompleted(40)
+
+;Set bed as needing to be made
+BedScript.NeedsTidying(True);
+
+setObjectiveDisplayed(50)
+util.Log("LAM_MQ01: Stage 50")
 ;END CODE
 EndFunction
 ;END FRAGMENT
