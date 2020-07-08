@@ -1,4 +1,4 @@
-ScriptName LAM_MQ01_LaundryBag Extends Activator
+ScriptName LAM_MQ01_LaundryBag Extends ReferenceAlias
 {Orgnar's dirty laundry, activating it gives you an item which you must then take to get cleaned}
 
 ;This specific LaundryBag Script only exists on Mq01, to advance the quest.
@@ -12,9 +12,9 @@ Event OnActivate(ObjectReference akActionRef)
 	;Disable Activator the same way the broom one works,
 	;Add "Orgnar's dirty laundry" to your inventory
 	;Update LAM_MQ01 to the next stage (Wash the clothes)
-	If (akActionRef == PlayerRef)
+	;If (akActionRef == PlayerRef)
 		;Is player
-		
+		util.Log("Player activating laundry bag.")
 		;Picking Laundry up
 		If (LAM_MQ01.GetStage() == 70)
 			util.Log("MQ01: Player picking up Orgnar's dirty laundry");
@@ -34,10 +34,10 @@ Event OnActivate(ObjectReference akActionRef)
 		
 		EndIf
 	
-	Else
+	;Else
 		util.Log("Someone other than the player is trying to steal Orgnar's Laundry! (MQ01)");
 	
-	EndIf
+	;EndIf
 	
 EndEvent
 

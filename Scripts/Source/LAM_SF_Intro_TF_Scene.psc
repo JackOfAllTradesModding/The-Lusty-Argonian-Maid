@@ -6,6 +6,7 @@ Scriptname LAM_SF_Intro_TF_Scene Extends Scene Hidden
 Function Fragment_12()
 ;BEGIN CODE
 ;Teleport the cultists in.
+util.Log("Scene: Bringing in the Cultists (teleporting)");
 MGTeleportInEffect.Play(CultLeaderAlias.GetReference(),3.6)
 CultLeaderAlias.GetActorReference().SetAlpha(1, true)
 MGTeleportInEffect.Play(Cultist01Alias.GetReference(),3.6)
@@ -32,7 +33,8 @@ MagicWall.Enable()
 ;Game.SetPlayerAIDriven(False);
 Game.ForceThirdPerson()
 Game.DisablePlayerControls(True, True, False, False, True, True, True, True)
-Debug.Trace("LAM: SCENE phase1 fragment")
+;Debug.Trace("LAM: SCENE phase1 fragment")
+util.Log("Phase 1 of TF Scene");
 CultLeaderAlias.GetReference().Enable()
 Cultist01Alias.GetReference().Enable()
 Cultist02Alias.GetReference().Enable()
@@ -49,6 +51,7 @@ EndFunction
 ;BEGIN FRAGMENT Fragment_4
 Function Fragment_4()
 ;BEGIN CODE
+util.Log("Player TF about to happen!");
 PlayerREF.PlaceAtMe(LAM_ExplosionTF)
 util.FadeToBlackAndHold()
 PlayerScript.Transform()
