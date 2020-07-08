@@ -1,4 +1,4 @@
-ScriptName LAM_WashBasin Extends Activator
+ScriptName LAM_WashBasin Extends ObjectReference
 {Removes dirty laundry from your inventory to give you wet laundry}
 
 Quest Property LAM_ChoreLaundry Auto;
@@ -11,9 +11,12 @@ Actor Property PlayerRef Auto;
 
 Event OnActivate(ObjectReference akActionRef)
 {Handles actually washing the laundry in the basin/tub}
-
+	
+	util.Log("Washbasin activated...");
+	
 	;If Laundry Quest is active || MQ01 stage is correct
 	If LAM_ChoreLaundry.GetStage() == 20 
+		util.Log("Player is doing generic laundry.");
 		;It's time for laundry, remove the dirty laundry, show a message, add wet laundry corresponding to the dirty laundry.
 		;To avoid disastrously repetitive and mind-numbingly boring gameplay this simply does all the laundry at once.
 		
@@ -26,6 +29,7 @@ Event OnActivate(ObjectReference akActionRef)
 		LAM_ChoreLaundry.SetStage(30);
 		
 	ElseIf LAM_MQ01.GetStage() == 80
+		util.Log("Player is doing ORgnar's laundry for MQ01");
 		;Tutorial Laundry, Will just be Orgnar's and the players
 		
 		;Remove the Dirty laundry
@@ -45,7 +49,7 @@ Event OnActivate(ObjectReference akActionRef)
 		LAM_MQ01.SetStage(90);
 	Else
 		;Not time for laundry
-	
+		util.Log("But the player doesn't actually need to be doing Laundry");
 	EndIf
 	
 EndEvent

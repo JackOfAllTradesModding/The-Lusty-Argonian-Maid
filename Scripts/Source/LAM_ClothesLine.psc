@@ -1,4 +1,4 @@
-ScriptName LAM_ClothesLine Extends Activator
+ScriptName LAM_ClothesLine Extends ObjectReference
 {Removes wet laundry from your inventory to hang and dry}
 
 ;This one is a bit complicated compared to the others.
@@ -40,6 +40,8 @@ Event OnActivate(ObjectReference akActionRef)
 		GoToState("Running");
 	
 	ElseIf LAM_MQ01.GetStage() == 90 ;MQ Stage
+		
+		util.Log("Player washing Orgnar's laundry for MQ01.");
 		
 		LAM_MQ01LaundryMessage01.Show();
 		;Remove Orgnar's laundry specifically
@@ -103,6 +105,7 @@ State Running
 			If LAM_ChoreLaundry.GetStage() == 40
 				;;FIXME
 			ElseIf LAM_MQ01.GetStage() == 100
+				LAM_MQ01LaundryMessage02.Show();
 				LAM_MQ01.SetStage(110);
 			EndIf
 			GoToState("Done");
@@ -112,12 +115,13 @@ State Running
 		EndIf
 		
 		;Advance Stage:
-		If LAM_ChoreLaundry.GetStage() == 40
+		;If LAM_ChoreLaundry.GetStage() == 40
 		
-		ElseIf LAM_MQ01.GetStage() == 100
-			LAM_MQ01LaundryMessage02.Show();
-			LAM_MQ01.SetStage(110)
-		EndIf
+		;ElseIf LAM_MQ01.GetStage() == 100
+		;	LAM_MQ01LaundryMessage02.Show();
+		;	LAM_MQ01.SetStage(110)
+		;	GoToState("Done");
+		;EndIf
 		
 	EndEvent
 
@@ -130,6 +134,7 @@ State Done
 	Event OnActivate(ObjectReference akActionRef)
 		;Check how long it's been done, if it's been there for a while certain events might happen. If you leave your laundry out all day it might get stolen.
 		;Remove apparent laundry, add clean laundry to inventory, update quest to put it back in the room.
+		util.Log("Player activating dried laundry...");
 		
 		If LAM_ChoreLaundry.GetStage() == 50
 		
