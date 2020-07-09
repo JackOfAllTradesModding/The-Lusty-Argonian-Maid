@@ -25,9 +25,10 @@ Event OnActivate(ObjectReference akActionRef)
 		Game.EnablePlayerControls()
 		;EndAnimation
 		PlayerREF.PlayIdle(idleLooseSweepingStart);Should end it
-		(LAM_MQ01 as LAM_MQ01Script).DustSwept += 1;
-		(LAM_MQ01 as LAM_MQ01Script).SweepDust(WhichDust)
-		IF (LAM_MQ01 as LAM_MQ01Script).DustSwept == (LAM_MQ01 as LAM_MQ01Script).DustToSweep
+		LAM_MQ01Script temp = (LAM_MQ01 as LAM_MQ01Script)
+		temp.DustSwept += 1;
+		temp.SweepDust(WhichDust)
+		If temp.DustSwept == temp.DustToSweep
 			LAM_MQ01.SetStage(30)
 		EndIf
 	EndIf
