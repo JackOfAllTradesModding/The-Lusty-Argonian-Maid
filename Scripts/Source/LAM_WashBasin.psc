@@ -81,3 +81,6 @@ Message Property LAM_MQ01LaundryMessage01 Auto; Messages to display during the t
 
 ;Hidden box for laundry items
 ObjectReference Property LaundryBox  Auto; 
+ReferenceAlias Property LAM_LaundryDirtyPatron02  Auto  
+
+ReferenceAlias Property LAM_LaundryWashedPatron02  Auto  
