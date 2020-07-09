@@ -22,6 +22,7 @@ Float Property TimerCurrent = 0.0 Auto;
 
 Function StartTimer()
 {Initiates the timer, called when laudry chore quest is completed}
+	DelphineNeedsLaundry = !DelphineNeedsLaundry;
 	util.Log("Timer until laundry needs to be done again started...");
 	GoToState("Running");
 EndFunction
@@ -31,7 +32,6 @@ Function EndTimer()
 	util.Log("Laundry timer expired starting quest.");
 	LAM_ChoreLaundry.Start();
 	;Invert Delphine's toggle for next time
-	DelphineNeedsLaundry = !DelphineNeedsLaundry;
 	TimerCurrent = 0.0;
 	GoToState("");
 EndFunction

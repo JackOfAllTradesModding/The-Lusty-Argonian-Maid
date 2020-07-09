@@ -2,18 +2,65 @@
 ;NEXT FRAGMENT INDEX 18
 Scriptname LAM_QF_ChoreLaundry Extends Quest Hidden
 
-;BEGIN FRAGMENT Fragment_17
-Function Fragment_17()
-;BEGIN CODE
-;Stage 200
-;END CODE
-EndFunction
-;END FRAGMENT
+;BEGIN ALIAS PROPERTY LaundryStaticOrgnar
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_LaundryStaticOrgnar Auto
+;END ALIAS PROPERTY
 
-;BEGIN FRAGMENT Fragment_7
-Function Fragment_7()
+;BEGIN ALIAS PROPERTY LaundryStaticDelphine
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_LaundryStaticDelphine Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY LaundryActivatorPlayer
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_LaundryActivatorPlayer Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY LaundryStaticPlayer
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_LaundryStaticPlayer Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY LAM_LaundryStaticPatron01
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_LAM_LaundryStaticPatron01 Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY Orgnar
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_Orgnar Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY LaundryActivatorDelphine
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_LaundryActivatorDelphine Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY LaundryActivatorOrgnar
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_LaundryActivatorOrgnar Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY LaundryActivatorPatron01
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_LaundryActivatorPatron01 Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY LaundryStaticPatron02
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_LaundryStaticPatron02 Auto
+;END ALIAS PROPERTY
+
+;BEGIN ALIAS PROPERTY LaundryActivatorPatron02
+;ALIAS PROPERTY TYPE ReferenceAlias
+ReferenceAlias Property Alias_LaundryActivatorPatron02 Auto
+;END ALIAS PROPERTY
+
+;BEGIN FRAGMENT Fragment_16
+Function Fragment_16()
 ;BEGIN CODE
-;Stage 35
+;Stage 80
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -26,58 +73,10 @@ Function Fragment_4()
 EndFunction
 ;END FRAGMENT
 
-;BEGIN FRAGMENT Fragment_15
-Function Fragment_15()
-;BEGIN CODE
-;Stage 75
-;END CODE
-EndFunction
-;END FRAGMENT
-
-;BEGIN FRAGMENT Fragment_8
-Function Fragment_8()
-;BEGIN CODE
-;Stage 40
-;END CODE
-EndFunction
-;END FRAGMENT
-
-;BEGIN FRAGMENT Fragment_12
-Function Fragment_12()
-;BEGIN CODE
-;Stage 60
-;END CODE
-EndFunction
-;END FRAGMENT
-
 ;BEGIN FRAGMENT Fragment_5
 Function Fragment_5()
 ;BEGIN CODE
 ;Stage 25
-;END CODE
-EndFunction
-;END FRAGMENT
-
-;BEGIN FRAGMENT Fragment_9
-Function Fragment_9()
-;BEGIN CODE
-;Stage 45
-;END CODE
-EndFunction
-;END FRAGMENT
-
-;BEGIN FRAGMENT Fragment_0
-Function Fragment_0()
-;BEGIN CODE
-;Stage 0
-;END CODE
-EndFunction
-;END FRAGMENT
-
-;BEGIN FRAGMENT Fragment_16
-Function Fragment_16()
-;BEGIN CODE
-;Stage 80
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -90,26 +89,10 @@ Function Fragment_10()
 EndFunction
 ;END FRAGMENT
 
-;BEGIN FRAGMENT Fragment_13
-Function Fragment_13()
+;BEGIN FRAGMENT Fragment_17
+Function Fragment_17()
 ;BEGIN CODE
-;Stage 65
-;END CODE
-EndFunction
-;END FRAGMENT
-
-;BEGIN FRAGMENT Fragment_11
-Function Fragment_11()
-;BEGIN CODE
-;Stage 55
-;END CODE
-EndFunction
-;END FRAGMENT
-
-;BEGIN FRAGMENT Fragment_1
-Function Fragment_1()
-;BEGIN CODE
-;Stage 5
+;Stage 200
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -122,18 +105,34 @@ Function Fragment_2()
 EndFunction
 ;END FRAGMENT
 
-;BEGIN FRAGMENT Fragment_3
-Function Fragment_3()
-;BEGIN CODE
-;Stage 15
-;END CODE
-EndFunction
-;END FRAGMENT
-
 ;BEGIN FRAGMENT Fragment_6
 Function Fragment_6()
 ;BEGIN CODE
 ;Stage 30
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_9
+Function Fragment_9()
+;BEGIN CODE
+;Stage 45
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_1
+Function Fragment_1()
+;BEGIN CODE
+;Stage 5
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_7
+Function Fragment_7()
+;BEGIN CODE
+;Stage 35
 ;END CODE
 EndFunction
 ;END FRAGMENT
@@ -146,6 +145,62 @@ Function Fragment_14()
 EndFunction
 ;END FRAGMENT
 
+;BEGIN FRAGMENT Fragment_15
+Function Fragment_15()
+;BEGIN CODE
+;Stage 75
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_11
+Function Fragment_11()
+;BEGIN CODE
+;Stage 55
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_12
+Function Fragment_12()
+;BEGIN CODE
+;Stage 60
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_0
+Function Fragment_0()
+;BEGIN CODE
+;Stage 0
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_8
+Function Fragment_8()
+;BEGIN CODE
+;Stage 40
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_3
+Function Fragment_3()
+;BEGIN CODE
+;Stage 15
+;END CODE
+EndFunction
+;END FRAGMENT
+
+;BEGIN FRAGMENT Fragment_13
+Function Fragment_13()
+;BEGIN CODE
+;Stage 65
+;END CODE
+EndFunction
+;END FRAGMENT
+
 ;END FRAGMENT CODE - Do not edit anything between this and the begin comment
 
 LAM_Util Property util  Auto  
@@ -153,3 +208,6 @@ LAM_Util Property util  Auto
 
 LAM_ChoreLaundryTimer Property ChoreTimer  Auto  
 {The script that governs time between this task repeating, and stores some useful information}
+
+LAM_InnManager Property manager  Auto  
+{Tracks patron 01 and 02 if they exist}
