@@ -15,15 +15,21 @@ Event OnActivate(ObjectReference akActionRef)
 	util.Log("Washbasin activated...");
 	
 	;If Laundry Quest is active || MQ01 stage is correct
-	If LAM_ChoreLaundry.GetStage() == 20 
+	Int Stage = LAM_ChoreLaundry.GetStage();
+	If Stage == 20 || Stage == 15
 		util.Log("Player is doing generic laundry.");
 		;It's time for laundry, remove the dirty laundry, show a message, add wet laundry corresponding to the dirty laundry.
 		;To avoid disastrously repetitive and mind-numbingly boring gameplay this simply does all the laundry at once.
 		
+		;Remove all dirty laundry
+		PlayerREF.RemoveItem(LAM_DirtyLaundry, (LAM_ChoreLaundry As LAM_ChoreLaundryScript).LaundryCount, False, PlayerREF);
+		
 		;Display the flavortext for the player
 		WashingMessage().Show();
 		
-		;For each piece of dirty laundry, remove it and add the washed one
+		;Add All washed laundry
+		LaundryBox.RemoveItem(LAM_WetLaundry, (LAM_ChoreLaundry As LAM_ChoreLaundryScript).LaundryCount, False, PlayerREF);
+			
 		
 		;Update laundry stage
 		LAM_ChoreLaundry.SetStage(30);
@@ -67,12 +73,18 @@ ReferenceAlias Property LAM_LaundryDirtyPlayer Auto;
 ReferenceAlias Property LAM_LaundryDirtyOrgnar Auto;
 ReferenceAlias Property LAM_LaundryDirtyDelphine Auto;
 ReferenceAlias Property LAM_LaundryDirtyPatron01 Auto;
+ReferenceAlias Property LAM_LaundryDirtyPatron02  Auto  
 
 ;Washed Laundry Aliases
 ReferenceAlias Property LAM_LaundryWashedPlayer Auto;
 ReferenceAlias Property LAM_LaundryWashedOrgnar Auto;
 ReferenceAlias Property LAM_LaundryWashedDelphine Auto;
 ReferenceAlias Property LAM_LaundryWashedPatron01 Auto;
+ReferenceAlias Property LAM_LaundryWashedPatron02  Auto  
+
+;Keywords to remove laundry from inventories
+Keyword Property LAM_WetLaundry Auto;
+Keyword Property LAM_DirtyLaundry Auto;
 
 Message[] Property LAM_LaundryMessages Auto;
 {Array holding the laundry messages to randomly select and play}
@@ -81,6 +93,4 @@ Message Property LAM_MQ01LaundryMessage01 Auto; Messages to display during the t
 
 ;Hidden box for laundry items
 ObjectReference Property LaundryBox  Auto; 
-ReferenceAlias Property LAM_LaundryDirtyPatron02  Auto  
 
-ReferenceAlias Property LAM_LaundryWashedPatron02  Auto  
