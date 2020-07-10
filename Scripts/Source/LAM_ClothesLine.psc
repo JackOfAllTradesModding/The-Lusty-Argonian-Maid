@@ -22,10 +22,13 @@ Float Property TimerMAX = 2.0 Auto;
 Float Property TimerCurrent = 0.0 Auto;
 {Amount of time laundry has currently been drying}
 
+Float Property TimerTotal = 0.0 Auto;
+{Total time spent on clothesline, even if rain interfered}
 
 
 ;EMPTY STATE: Some Functions/Events exist here and are left blank for a reason
 
+;Expected state of clothesline: no laundry, no timer
 Event OnActivate(ObjectReference akActionRef)
 	;If Laundry Quest is in proper stage || MQ01 is
 	If LAM_ChoreLaundry.GetStage() == 30 ;Laundry Stage
@@ -75,6 +78,7 @@ EndEvent
 
 ;RUNNING STATE: Player has put laundry on the line
 State Running
+;Expected State of Clothesline: Wet laundry placed, waiting to dry
 
 	Event OnActivate(ObjectReference akActionRef)
 		;Display a message about the laundry not being dry yet
@@ -130,6 +134,7 @@ EndState
 
 ;DONE STATE: Laundry is ready to be collected.
 State Done
+;Expected state of clothesline: Laundry is finished drying, waiting to be collected
 
 	Event OnActivate(ObjectReference akActionRef)
 		;Check how long it's been done, if it's been there for a while certain events might happen. If you leave your laundry out all day it might get stolen.
