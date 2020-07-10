@@ -30,14 +30,17 @@ Float Property TimerTotal = 0.0 Auto;
 
 ;Expected state of clothesline: no laundry, no timer
 Event OnActivate(ObjectReference akActionRef)
+
 	;If Laundry Quest is in proper stage || MQ01 is
-	If LAM_ChoreLaundry.GetStage() == 30 ;Laundry Stage
+	Int Stage = LAM_ChoreLaundry.GetStage();
+	If (Stage == 30) || (Stage == 25) ;Laundry Stage
 		util.Log("Clothesline activated for laundry chore quest...")
 		;Take wet laundry, all at once.
-		PlayerREF.RemoveItem(LAM_WetLaundry, 4, False, LaundryBox);
+		PlayerREF.RemoveItem(LAM_WetLaundry, (LAM_ChoreLaundry As LAM_ChoreLaundryScript).LaundryCount, False, LaundryBox);
+		;The above line passes a keyword as the item to remove and the count is taken from another script as the number of laundry items active (2-5) per instance of this quest
 		util.Log("Wet Laundry removed...");
 		;Update appropriate objective.
-		LAM_ChoreLaundry.SetStage(40);
+		LAM_ChoreLaundry.SetStage(Stage + 10); This simplifies a lot of conditionals and handles both versions of this stage
 		util.Log("Stage set, changing to \"Running\" State");
 		
 		GoToState("Running");
@@ -63,6 +66,7 @@ Event OnBeginState()
 	;Returning here after laundry. Clear all timers and flags, do nothing.
 	UnregisterForUpdateGameTime();In case they're still active for whatever reason
 	TimerCurrent = 0.0;
+	TimerTotal = 0.0;
 	util.Log("Clothesline entering empty state, updates stopped, timer reset.")
 EndEvent
 
@@ -102,30 +106,62 @@ State Running
 	Event OnUpdateGameTime()
 		;If time is up, advance the quest, go to state Done
 		util.Log("Clothesline timer update in \"Running\" state, timer incremented...");
+		
 		TimerCurrent += UpdateInterval; Increment
-		If TimerCurrent >= TimerMAX
-			util.Log("Timer complete, move to \"Done\" State");
-			;Advance Stage:
-			If LAM_ChoreLaundry.GetStage() == 40
-				;;FIXME
-			ElseIf LAM_MQ01.GetStage() == 100
-				LAM_MQ01LaundryMessage02.Show();
-				LAM_MQ01.SetStage(110);
+		TimerTotal += UpdateInterval;
+		;Check for Rain first
+		If Weather.GetCurrentWeather().GetClassification() < 2 ;0 is sunny, 1 is cloudy,2 is Rainy 3 is Snow. So this ensures the quest can proceed	
+			;Not Rainy, proceed
+			
+			If TimerCurrent >= TimerMAX
+				util.Log("Timer complete, move to \"Done\" State");
+				
+				;Advance Stage:
+				Int Stage = LAM_ChoreLaundry.GetStage();
+				
+				If Stage == 35 || Stage == 40
+					;Increment by 20
+					LAM_ChoreLaundry.SetStage(Stage + 20);
+					
+				ElseIf Stage == 45 || Stage == 50
+					;Increment by 10
+					LAM_ChoreLaundry.SetStage(Stage + 10);
+					
+				ElseIf LAM_MQ01.GetStage() == 100
+					LAM_MQ01LaundryMessage02.Show();
+					LAM_MQ01.SetStage(110);
+				
+				Else
+					;FIXME THROW ERRER
+				EndIf
+				
+				GoToState("Done");
+				
+			Else
+				util.Log("Not dry yet, registering for another update.");
+				RegisterForSingleUpdateGameTime(UpdateInterval);
 			EndIf
-			GoToState("Done");
+			
 		Else
-			util.Log("Not dry yet, registering for another update.");
-			RegisterForSingleUpdateGameTime(UpdateInterval);
+			;It is rainy oh no!
+			;Restart current timer, increment total, set stage to appropriate
+			TimerCurrent = 0.0;
+			Int Stage = LAM_ChoreLaundry.GetStage();
+				
+				If Stage == 35 || Stage == 40
+					;Increment by 20
+					LAM_ChoreLaundry.SetStage(Stage + 10);
+					
+				ElseIf LAM_MQ01.GetStage() == 100
+					LAM_MQ01LaundryMessage02.Show();
+					LAM_MQ01.SetStage(110);
+					;I have opted to ignore Mq01 during the rain for now
+					;FIXME: ADD STAGE 105 to mq01 to account for rain
+				
+				Else
+					;Likely just a repeat of this stage, don't need to move anywhere special
+				EndIf
 		EndIf
-		
-		;Advance Stage:
-		;If LAM_ChoreLaundry.GetStage() == 40
-		
-		;ElseIf LAM_MQ01.GetStage() == 100
-		;	LAM_MQ01LaundryMessage02.Show();
-		;	LAM_MQ01.SetStage(110)
-		;	GoToState("Done");
-		;EndIf
 		
 	EndEvent
 
@@ -141,21 +177,26 @@ State Done
 		;Remove apparent laundry, add clean laundry to inventory, update quest to put it back in the room.
 		util.Log("Player activating dried laundry...");
 		
-		If LAM_ChoreLaundry.GetStage() == 50
-		
+		Int Stage = LAM_ChoreLaundry.GetStage();
+		If Stage == 55 || Stage == 60
+			;Add all items to player, advance quest
+			LaundryBox.RemoveItem(LAM_CleanLaundry, (LAM_ChoreLaundry As LAM_ChoreLaundryScript).LaundryCount, False, PlayerREF);
+			LAM_ChoreLaundry.SetStage(Stage + 10);
+			GoToState("");
 		ElseIf LAM_MQ01.GetStage() == 110
 			LAM_MQ01LaundryMessage03.Show();
 			;Return clothes
 			LaundryBox.RemoveItem(LAM_LaundryCleanOrgnar.GetReference(), 1, False, PlayerRef);
 			;Advance Quest
 			LAM_MQ01.SetStage(120);
+			GoToState("");
+		Else
+			;FIXME THROW ERROR
 		EndIf
 		
 	EndEvent
 	
 	Event OnBeginState()
-		;Advance Quest Stage so objective updates.
-		
 		;Start a timer to see how long it's done before the player picks it up.
 		util.Log("Clothesline entering \"Done\" state, beginning update to see how long until the player got to it.");
 		RegisterForSingleUpdateGameTime(UpdateInterval);
@@ -171,6 +212,7 @@ State Done
 		;Increment Timer
 		util.Log("Timer update on clothesline in \"Done\" State, inrementing timer.");
 		TimerCurrent += UpdateInterval;
+		TimerTotal += UpdateInterval;
 		RegisterForSingleUpdateGameTime(UpdateInterval);
 	EndEvent
 
