@@ -4,6 +4,7 @@ ScriptName LAM_ChoreLaundryScript Extends Quest Conditional
 ;Scripts to import properties from
 LAM_InnManager Property Manager Auto;
 LAM_ChoreLaundryTimer Property Timer Auto;
+{DEPRECATED}
 
 ;This might seem counterintuitive based on how this script is set up, but you can only have one conditional script on an object at a time, 
 ;And I didn't  want to make the conditionals on the Core and Chore master the inn manager and laundry timer respectively
