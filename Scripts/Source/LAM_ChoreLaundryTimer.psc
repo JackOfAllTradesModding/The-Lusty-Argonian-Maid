@@ -8,7 +8,7 @@ Quest Property LAM_ChoreLaundry Auto;
 {The actual laundry chore quest}
 
 Bool Property DelphineNeedsLaundry Auto 
-{DEPRECATED Delphine's laundry is every other time (once a week instead of every few days)}
+{Delphine's laundry is every other time (once a week instead of every few days)}
 
 Float Property TimerInterval = 2.0 Auto;
 {Interval of updates to laundry timer, to check for events}
@@ -23,7 +23,10 @@ Float Property TimerCurrent = 0.0 Auto;
 Function StartTimer()
 {Initiates the timer, called when laudry chore quest is completed}
 	LAM_ChoreLaundryScript script = (LAM_ChoreLaundry as LAM_ChoreLaundryScript); The pros and cons of my naming convention in one convenient line
-	script.DelphineNeedsLaundry = !script.DelphineNeedsLaundry;
+	;Flip the persistent one here
+	DelphineNeedsLaundry = !DelphineNeedsLaundry;
+	;Set the non-persistent one that can be used as a condition by quests and dialogue.
+	script.DelphineNeedsLaundry = DelphineNeedsLaundry;
 	util.Log("Timer until laundry needs to be done again started...");
 	GoToState("Running");
 EndFunction

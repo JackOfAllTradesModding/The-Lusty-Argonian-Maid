@@ -4,6 +4,7 @@ ScriptName LAM_MQ01_LaundryBag Extends ReferenceAlias
 ;This specific LaundryBag Script only exists on Mq01, to advance the quest.
 
 ReferenceAlias Property MQ_OrgnarsLaundry Auto
+{DEPRECATED}
 ReferenceAlias Property LaundryBox Auto; Box the "laundry" items are hidden in
 
 Actor Property PlayerRef Auto;

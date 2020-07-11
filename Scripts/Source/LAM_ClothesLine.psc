@@ -10,6 +10,7 @@ Quest Property LAM_ChoreLaundry Auto;
 Quest Property LAM_MQ01 Auto;
 
 LAM_Util Property util Auto;
+LAM_InnManager Property manager Auto;
 
 Actor Property PlayerREF Auto;
 
@@ -51,7 +52,29 @@ Event OnActivate(ObjectReference akActionRef)
 		
 		LAM_MQ01LaundryMessage01.Show();
 		;Remove Orgnar's laundry specifically
-		PlayerRef.RemoveItem(LAM_LaundryWashedOrgnar.GetReference(), 1, False, LaundryBox);
+		;PlayerRef.RemoveItem(LAM_LaundryWashedOrgnar.GetReference(), 1, False, LaundryBox);
+		;Due to issues in how the laundry is created, this elegant, single line, easily readable function is replaced with the below block of code. For now.
+		PlayerREF.RemoveItem(LAM_LaundryWashedPlayer.GetReference(), 1, False, LaundryBox)
+		PlayerREF.RemoveItem(LAM_LaundryWashedOrgnar.GetReference(), 1, False, LaundryBox)
+		
+		LAM_ChoreLaundryScript script = (LAM_ChoreLaundry As LAM_ChoreLaundryScript); Unfortuante that it came to this
+		;This is being done this way and not with the count as before because it seems to be impossible to generate the laudnry by conditions, and as such removing a count is likely to give the player a random assortment
+		; of laundry and not the specific onces they will need to complete the quest. Technically it would still function appropriately at this step, but not the next. Other laundry scripts are in the same position.
+		
+		;Delphine
+		If Script.DelphineNeedsLaundry
+			PlayerREF.RemoveItem(LAM_LaundryWashedDelphine.GetReference(), 1, False, LaundryBox)
+		EndIf
+		
+		;Patron01
+		If manager.Patron01_b
+			PlayerREF.RemoveItem(LAM_LaundryWashedPatron01.GetReference(), 1, False, LaundryBox)
+		EndIf
+		
+		;Patron02
+		If manager.Patron02_b
+			PlayerREF.RemoveItem(LAM_LaundryWashedPatron02.GetReference(), 1, False, LaundryBox)
+		EndIf
 		;Adv Stage
 		LAM_MQ01.SetStage(100);
 		;Running State
@@ -180,7 +203,30 @@ State Done
 		Int Stage = LAM_ChoreLaundry.GetStage();
 		If Stage == 55 || Stage == 60
 			;Add all items to player, advance quest
-			LaundryBox.RemoveItem(LAM_CleanLaundry, (LAM_ChoreLaundry As LAM_ChoreLaundryScript).LaundryCount, False, PlayerREF);
+			;LaundryBox.RemoveItem(LAM_CleanLaundry, (LAM_ChoreLaundry As LAM_ChoreLaundryScript).LaundryCount, False, PlayerREF);
+			;Due to issues in how the laundry is created, this elegant, single line, easily readable function is replaced with the below block of code. For now.
+			LaundryBox.RemoveItem(LAM_LaundryCleanPlayer.GetReference(), 1, False, PlayerREF)
+			LaundryBox.RemoveItem(LAM_LaundryCleanOrgnar.GetReference(), 1, False, PlayerREF)
+			
+			LAM_ChoreLaundryScript script = (LAM_ChoreLaundry As LAM_ChoreLaundryScript); Unfortuante that it came to this
+			;This is being done this way and not with the count as before because it seems to be impossible to generate the laudnry by conditions, and as such removing a count is likely to give the player a random assortment
+			; of laundry and not the specific onces they will need to complete the quest. Technically it would still function appropriately at this step, but not the next. Other laundry scripts are in the same position.
+			
+			;Delphine
+			If Script.DelphineNeedsLaundry
+				LaundryBox.RemoveItem(LAM_LaundryCleanDelphine.GetReference(), 1, False, PlayerREF)
+			EndIf
+			
+			;Patron01
+			If manager.Patron01_b
+				LaundryBox.RemoveItem(LAM_LaundryCleanPatron01.GetReference(), 1, False, PlayerREF)
+			EndIf
+			
+			;Patron02
+			If manager.Patron02_b
+				LaundryBox.RemoveItem(LAM_LaundryCleanPatron02.GetReference(), 1, False, PlayerREF)
+			EndIf	
+			
 			LAM_ChoreLaundry.SetStage(Stage + 10);
 			GoToState("");
 		ElseIf LAM_MQ01.GetStage() == 110
@@ -223,11 +269,19 @@ EndState
 ;More Properties
 
 ;Washed Laundry Aliases
+ReferenceAlias Property LAM_LaundryWashedPlayer Auto;
 ReferenceAlias Property LAM_LaundryWashedOrgnar Auto;
+ReferenceAlias Property LAM_LaundryWashedDelphine Auto;
+ReferenceAlias Property LAM_LaundryWashedPatron01 Auto;
+ReferenceAlias Property LAM_LaundryWashedPatron02  Auto  
 KeyWord Property LAM_WetLaundry Auto;
 
 ;Clean/Dry Laundry Aliases
+ReferenceAlias Property LAM_LaundryCleanPlayer Auto;
 ReferenceAlias Property LAM_LaundryCleanOrgnar Auto;
+ReferenceAlias Property LAM_LaundryCleanDelphine Auto;
+ReferenceAlias Property LAM_LaundryCleanPatron01 Auto;
+ReferenceAlias Property LAM_LaundryCleanPatron02  Auto  
 KeyWord Property LAM_CleanLaundry Auto;
 
 Message[] Property LAM_LaundryMessages Auto;
