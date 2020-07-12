@@ -14,7 +14,8 @@ Event OnActivate(ObjectReference akActionRef)
 
 	If (akActionRef == PlayerREF) 
 		;Basically the broom static script, if the clean laundry is in the inventory, enable the static
-		If (PlayerREF.GetItemCount(LAM_LaundryClean.GetReference()) > 0) && (LAM_ChoreLaundry.GetStage() == 60)
+		;LAundry is available to return in both stage 65 and 70
+		If (PlayerREF.GetItemCount(LAM_LaundryClean.GetReference()) > 0) && ((LAM_ChoreLaundry.GetStage() == 70) || (LAM_ChoreLaundry.GetStage() == 65))
 			util.Log("Player returning clean laundry, type " + LaundryType);
 			PlayerREF.RemoveItem(LAM_LaundryClean.GetReference(), 1, False, LaundryBox);
 			LaundryStatic.Enable();
@@ -23,7 +24,8 @@ Event OnActivate(ObjectReference akActionRef)
 			SetLaundryStage();
 			
 		;If the dirty laundry is not in their inventory, add it, 
-		ElseIf (PlayerREF.GetItemCount(LAM_LaundryDirty.GetReference()) == 0) && (LAM_ChoreLaundry.GetStage() == 10)
+		;Laundry can be collected in stage 0, 5, or 10
+		ElseIf (PlayerREF.GetItemCount(LAM_LaundryDirty.GetReference()) == 0) && (LAM_ChoreLaundry.GetStage() <= 10)
 			util.Log("Player picking up dirty laundry, type " + LaundryType);
 			LaundryBox.RemoveItem(LAM_LaundryDirty.GetReference(), 1, False, PlayerREF);
 			LaundryStatic.Disable();
@@ -42,25 +44,29 @@ EndEvent
 
 ;If all of the laundry has been put where it needs to be, advance the quest stage
 Function SetLaundryStage()
-	;If stage 10, pick up all 4, advance to 20
-	If (LAM_ChoreLaundry.GetStage() == 10) && (PlayerREF.GetItemCount(LAM_DirtyLaundry) == 4)
+
+	;If it's stage zero, set it to stage 5
+	If LAM_ChoreLaundry.GetStage() == 0
+		LAM_ChoreLaundry.SetStage(5);
+
+	;If stage 5, pick up all, advance to 15
+	ElseIf (LAM_ChoreLaundry.GetStage() == 5) && (PlayerREF.GetItemCount(LAM_DirtyLaundry) == (LAM_ChoreLaundry As LAM_ChoreLaundryScript).LaundryCount)
+		LAM_ChoreLaundry.SetStage(15)
+
+	;If it's stage 10, pick up all advance to 20
+	ElseIf (LAM_ChoreLaundry.GetStage() == 10) && (PlayerREF.GetItemCount(LAM_DirtyLaundry) == (LAM_ChoreLaundry As LAM_ChoreLaundryScript).LaundryCount)
 		LAM_ChoreLaundry.SetStage(20)
-		
-	;If Stage 60, put back all 4, advance to 70
-	ElseIf (LAM_ChoreLaundry.GetStage() == 60) && (PlayerREF.GetItemCount(LAM_CleanLaundry) == 0)
-		LAM_ChoreLaundry.SetStage(70)
-		
-	;Tutorial laundry script moved to quest alias to remove this
-	;Check tutorial stage, only need player and orgnar's to advance from 70 to 80 to get, 110-120 to put back
-	;ElseIf (LAM_MQ01.GetStage() == 70) && (PlayerREF.GetItemCount(LAM_DirtyLaundry) == 2)
-		;If both are in inventory
-	;	LAM_MQ01.SetStage(80)
-	
-	;ElseIf (LAM_MQ01.GetStage() == 110) && (PlayerREF.GetItemCount(LAM_CleanLaundry) == 0)
-		;If neither are in inventory
-	;	LAM_MQ01.SetStage(120)
+
+	;If Stage 65, put back all, advance to 75
+	ElseIf (LAM_ChoreLaundry.GetStage() == 65) && (PlayerREF.GetItemCount(LAM_CleanLaundry) == 0)
+		LAM_ChoreLaundry.SetStage(75)
+
+	;If Stage 70, put back all, advance to 80
+	ElseIf (LAM_ChoreLaundry.GetStage() == 70) && (PlayerREF.GetItemCount(LAM_CleanLaundry) == 0)
+		LAM_ChoreLaundry.SetStage(80)
+
+	;No need to advance stage in any other scenario
 	Else
-	
 	
 	EndIf
 EndFunction

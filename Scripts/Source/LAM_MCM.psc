@@ -9,7 +9,7 @@ LAM_PlayerTF Property TF Auto;
 Message Property LAM_TF_Escape_Msg Auto;
 
 Event OnConfigInit()
-{Currently Unused, needed for any oninit activities}
+{Currently used to populate pages, needed for any oninit activities}
 
 Pages = new String[1];
 ;Pages[0] = "$LAM_MCM_Page0"
