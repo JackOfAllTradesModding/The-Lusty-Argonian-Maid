@@ -37,22 +37,9 @@ Event OnActivate(ObjectReference akActionRef)
 	If (Stage == 30) || (Stage == 25) ;Laundry Stage
 		util.Log("Clothesline activated for laundry chore quest...")
 		;Take wet laundry, all at once.
-		PlayerREF.RemoveItem(LAM_WetLaundry, (LAM_ChoreLaundry As LAM_ChoreLaundryScript).LaundryCount, False, LaundryBox);
+		;PlayerREF.RemoveItem(LAM_WetLaundry, (LAM_ChoreLaundry As LAM_ChoreLaundryScript).LaundryCount, False, LaundryBox);
 		;The above line passes a keyword as the item to remove and the count is taken from another script as the number of laundry items active (2-5) per instance of this quest
-		util.Log("Wet Laundry removed...");
-		;Update appropriate objective.
-		LAM_ChoreLaundry.SetStage(Stage + 10); This simplifies a lot of conditionals and handles both versions of this stage
-		util.Log("Stage set, changing to \"Running\" State");
 		
-		GoToState("Running");
-	
-	ElseIf LAM_MQ01.GetStage() == 90 ;MQ Stage
-		
-		util.Log("Player washing Orgnar's laundry for MQ01.");
-		
-		LAM_MQ01LaundryMessage01.Show();
-		;Remove Orgnar's laundry specifically
-		;PlayerRef.RemoveItem(LAM_LaundryWashedOrgnar.GetReference(), 1, False, LaundryBox);
 		;Due to issues in how the laundry is created, this elegant, single line, easily readable function is replaced with the below block of code. For now.
 		PlayerREF.RemoveItem(LAM_LaundryWashedPlayer.GetReference(), 1, False, LaundryBox)
 		PlayerREF.RemoveItem(LAM_LaundryWashedOrgnar.GetReference(), 1, False, LaundryBox)
@@ -75,7 +62,28 @@ Event OnActivate(ObjectReference akActionRef)
 		If manager.Patron02_b
 			PlayerREF.RemoveItem(LAM_LaundryWashedPatron02.GetReference(), 1, False, LaundryBox)
 		EndIf
+		
+		util.Log("Wet Laundry removed...");
+		
+		Static01.GetReference().Enable()
+		Static02.GetReference().Enable()
+		;Update appropriate objective.
+		LAM_ChoreLaundry.SetStage(Stage + 10); This simplifies a lot of conditionals and handles both versions of this stage
+		util.Log("Stage set, changing to \"Running\" State");
+		
+		GoToState("Running");
+	
+	ElseIf LAM_MQ01.GetStage() == 90 ;MQ Stage
+		
+		util.Log("Player washing Orgnar's laundry for MQ01.");
+		
+		LAM_MQ01LaundryMessage01.Show();
+		;Remove Orgnar's laundry specifically
+		PlayerRef.RemoveItem(LAM_LaundryWashedOrgnar.GetReference(), 1, False, LaundryBox);
+		
 		;Adv Stage
+		Static01.GetReference().Enable()
+		Static02.GetReference().Enable()
 		LAM_MQ01.SetStage(100);
 		;Running State
 		GoToState("Running");
@@ -175,9 +183,9 @@ State Running
 					;Increment by 20
 					LAM_ChoreLaundry.SetStage(Stage + 10);
 					
-				ElseIf LAM_MQ01.GetStage() == 100
-					LAM_MQ01LaundryMessage02.Show();
-					LAM_MQ01.SetStage(110);
+				;ElseIf LAM_MQ01.GetStage() == 100
+				;	LAM_MQ01LaundryMessage02.Show();
+				;	LAM_MQ01.SetStage(110);
 					;I have opted to ignore Mq01 during the rain for now
 					;FIXME: ADD STAGE 105 to mq01 to account for rain
 				
@@ -227,6 +235,10 @@ State Done
 				LaundryBox.RemoveItem(LAM_LaundryCleanPatron02.GetReference(), 1, False, PlayerREF)
 			EndIf	
 			
+			
+			Static01.GetReference().Disable()
+			Static02.GetReference().Disable()
+			
 			LAM_ChoreLaundry.SetStage(Stage + 10);
 			GoToState("");
 		ElseIf LAM_MQ01.GetStage() == 110
@@ -234,6 +246,8 @@ State Done
 			;Return clothes
 			LaundryBox.RemoveItem(LAM_LaundryCleanOrgnar.GetReference(), 1, False, PlayerRef);
 			;Advance Quest
+			Static01.GetReference().Disable()
+			Static02.GetReference().Disable()
 			LAM_MQ01.SetStage(120);
 			GoToState("");
 		Else
@@ -293,3 +307,8 @@ Message Property LAM_MQ01LaundryMessage03 Auto; Messages to display during the t
 
 ;Hidden box for laundry items
 ObjectReference Property LaundryBox  Auto; 
+ReferenceAlias Property Static01  Auto  
+{Gives the appearance of actually adding clothes to the lines}
+
+ReferenceAlias Property Static02  Auto  
+{Gives the appearance of actually adding clothes to the lines}
