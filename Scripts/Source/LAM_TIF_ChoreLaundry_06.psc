@@ -7,9 +7,12 @@ Function Fragment_0(ObjectReference akSpeakerRef)
 Actor akSpeaker = akSpeakerRef as Actor
 ;BEGIN CODE
 ;Display message about praise
+LAM_ChoreLaundry_EndMsg1.Show()
 Self.GetOwningQuest().SetStage(200)
 ;END CODE
 EndFunction
 ;END FRAGMENT
 
 ;END FRAGMENT CODE - Do not edit anything between this and the begin comment
+
+Message Property LAM_ChoreLaundry_EndMsg1  Auto  
